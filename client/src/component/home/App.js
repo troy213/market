@@ -4,25 +4,76 @@ import 'font-awesome/css/font-awesome.min.css'
 import avatar from '../../assets/avatar-default.jpg'
 import './App.css'
 
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
+
 const App = (props) => {
-  React.useEffect(() => {
-    const test = document.getElementById('test')
-    if (test.scrollWidth) {
-      console.log(document.getElementById('test').scrollWidth)
+  const responsive = {
+    desktop: {
+      breakpoint: {
+        max: 3000,
+        min: 1070,
+      },
+      items: 4,
+      partialVisibilityGutter: 40,
+    },
+    tablet: {
+      breakpoint: {
+        max: 1070,
+        min: 820,
+      },
+      items: 3,
+      partialVisibilityGutter: 30,
+    },
+    mobile: {
+      breakpoint: {
+        max: 820,
+        min: 560,
+      },
+      items: 2,
+      partialVisibilityGutter: 30,
+    },
+    xs: {
+      breakpoint: {
+        max: 560,
+        min: 0,
+      },
+      items: 1,
+      partialVisibilityGutter: 30,
+    },
+  }
+
+  let myFormRef = null
+
+  const onEnterPress = (e) => {
+    if (e.code === 'Enter') {
+      myFormRef.submit()
     }
-  })
+  }
 
   return (
     <>
       <nav className='nav'>
         <div className='nav-container'>
-          <h1 className='logo'>Logo</h1>
-          <input type='text' className='search-bar' placeholder='search' />
+          <a href='/'>
+            <h1 className='logo'>Logo</h1>
+          </a>
+          <form ref={(input) => (myFormRef = input)}>
+            <input
+              type='text'
+              className='search-bar'
+              name='search'
+              placeholder='search'
+              onKeyDown={onEnterPress}
+            />
+          </form>
           <div className='nav-utils'>
             <i className='fa fa-search search'></i>
             <i className='fa fa-shopping-cart cart'></i>
-            <img src={avatar} alt='avatar' className='avatar' />
-            <p>login</p>
+            <a href='/login' className='login'>
+              <img src={avatar} alt='avatar' className='avatar' />
+              <p>login</p>
+            </a>
           </div>
         </div>
       </nav>
@@ -68,26 +119,68 @@ const App = (props) => {
 
         <main className='main'>
           <h2>Hot Products</h2>
-          <section className='slider hot-products' id='test'>
-            <i className='fa fa-chevron-left chevron left'></i>
-            <i className='fa fa-chevron-right chevron right'></i>
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-          </section>
+          <div className='hot-products'>
+            <Carousel
+              additionalTransfrom={0}
+              arrows
+              autoPlaySpeed={3000}
+              centerMode={false}
+              className=''
+              containerClass='slider-container'
+              dotListClass=''
+              draggable
+              focusOnSelect={false}
+              itemClass=''
+              keyBoardControl
+              minimumTouchDrag={80}
+              renderButtonGroupOutside={false}
+              renderDotsOutside={false}
+              responsive={responsive}
+              showDots={false}
+              sliderClass=''
+              slidesToSlide={1}
+              swipeable
+            >
+              <Product />
+              <Product />
+              <Product />
+              <Product />
+              <Product />
+              <Product />
+            </Carousel>
+          </div>
 
           <h2>All Products</h2>
-          <section className='slider all-products'>
-            <i className='fa fa-chevron-left chevron left'></i>
-            <i className='fa fa-chevron-right chevron right'></i>
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-          </section>
+          <div className='all-products'>
+            <Carousel
+              additionalTransfrom={0}
+              arrows
+              autoPlaySpeed={3000}
+              centerMode={false}
+              className=''
+              containerClass='slider-container'
+              dotListClass=''
+              draggable
+              focusOnSelect={false}
+              itemClass=''
+              keyBoardControl
+              minimumTouchDrag={80}
+              renderButtonGroupOutside={false}
+              renderDotsOutside={false}
+              responsive={responsive}
+              showDots={false}
+              sliderClass=''
+              slidesToSlide={1}
+              swipeable
+            >
+              <Product />
+              <Product />
+              <Product />
+              <Product />
+              <Product />
+              <Product />
+            </Carousel>
+          </div>
 
           <div className='center'>
             <a href='/' className='btn-outline'>

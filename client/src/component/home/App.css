@@ -31,7 +31,8 @@ a {
   text-decoration: none;
 }
 
-button {
+button,
+.chevron {
   cursor: pointer;
 }
 
@@ -44,8 +45,7 @@ footer {
 }
 
 .main-promo,
-.side-promo-item,
-.card {
+.side-promo-item {
   margin: 1em;
   border-radius: 5px;
 }
@@ -105,6 +105,11 @@ footer {
   margin-right: 0.5rem;
 }
 
+.login {
+  display: flex;
+  align-items: center;
+}
+
 /* Promo Section */
 
 .promo {
@@ -151,30 +156,25 @@ footer {
   text-align: center;
 }
 
-.slider {
-  position: relative;
+.hot-products,
+.all-products {
+  margin: 1em 0;
+}
+
+.slider-container {
+  margin: 0 1em;
+}
+
+.slider-container li {
   display: flex;
-  overflow: hidden;
-  margin-right: 1em;
-}
-
-.chevron {
-  position: absolute;
-  top: 48%;
-}
-
-.chevron.left {
-  left: 41px;
-}
-
-.chevron.right {
-  right: 25px;
+  justify-content: center;
 }
 
 .card {
+  border-radius: 5px;
   height: 300px;
-  width: 213px;
-  min-width: 213px;
+  min-width: 200px;
+  max-width: 250px;
 }
 
 /* Services section */
@@ -183,6 +183,10 @@ footer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.services .card {
+  margin: 1em;
 }
 
 footer {
