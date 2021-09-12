@@ -19,6 +19,23 @@ body {
 .center {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn {
+  border-radius: 5px;
+  border: 0;
+  padding: 0.5em 1em;
+}
+
+.btn-primary {
+  color: whitesmoke;
+  background: #333;
+  font-size: 1rem;
 }
 
 .btn-outline {
@@ -29,9 +46,12 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 button,
+.user,
+.modal-close,
 .chevron {
   cursor: pointer;
 }
@@ -39,7 +59,7 @@ button,
 .nav,
 .main-promo,
 .side-promo-item,
-.card,
+.services .card,
 footer {
   background: rgba(51, 51, 51, 0.3);
 }
@@ -53,6 +73,7 @@ footer {
 .container {
   margin: 0 auto;
   width: 80%;
+  min-width: 360px;
   max-width: 980px;
 }
 
@@ -88,6 +109,7 @@ footer {
 }
 
 .search {
+  color: #333;
   display: block;
   font-size: 25px;
   margin-right: 1rem;
@@ -95,7 +117,7 @@ footer {
 
 .cart {
   color: #333;
-  font-size: 25px;
+  font-size: 30px;
   margin-right: 1rem;
 }
 
@@ -105,7 +127,7 @@ footer {
   margin-right: 0.5rem;
 }
 
-.login {
+.user {
   display: flex;
   align-items: center;
 }
@@ -168,6 +190,11 @@ footer {
 .slider-container li {
   display: flex;
   justify-content: center;
+  margin-bottom: 0.5em;
+}
+
+.slider-container button {
+  z-index: 1;
 }
 
 .card {
@@ -175,11 +202,12 @@ footer {
   height: 300px;
   min-width: 200px;
   max-width: 250px;
-  box-shadow: 5px 0px 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .image-container {
+  margin-top: 1em;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background-color: white;
@@ -195,10 +223,10 @@ footer {
 
 .product-desc {
   margin: 0 1em;
-  height: 100px;
+  height: 80px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Services section */
@@ -212,6 +240,8 @@ footer {
 .services .card {
   margin: 1em;
 }
+
+/* Footer section */
 
 footer {
   padding: 1em;
@@ -245,6 +275,64 @@ footer {
   color: whitesmoke;
   text-align: center;
   font-size: 0.75rem;
+}
+
+/* Modal */
+
+.modal {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal-container {
+  padding: 1em;
+  position: relative;
+  background: white;
+  border-radius: 5px;
+  min-height: 100px;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  font-size: 1.5rem;
+}
+
+/* Login section */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 30px;
+  width: 300px;
+  padding-left: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.login-container .btn {
+  margin: 0.5em;
+}
+
+.btn.sign-up {
+  background: #eee;
 }
 
 @media (min-width: 706px) {

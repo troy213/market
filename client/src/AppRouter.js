@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import App from './component/home/App'
+import Search from './component/page/Search'
+import Signup from './component/page/Signup'
 import store from './store'
 
 const AppRouter = () => (
@@ -9,6 +11,8 @@ const AppRouter = () => (
       <Route path='/' exact>
         <App store={store} />
       </Route>
+      <Route path='/search' component={Search} />
+      <Route path='/signup' component={Signup} />
     </Switch>
   </Router>
 )

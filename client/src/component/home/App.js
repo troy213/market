@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Header from './Header'
+import Footer from './Footer'
 import 'font-awesome/css/font-awesome.min.css'
-import avatar from '../../assets/avatar-default.jpg'
 import './App.css'
 
 import Carousel from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 
-const App = (props) => {
+const App = () => {
   const responsive = {
     desktop: {
       breakpoint: {
@@ -43,40 +44,9 @@ const App = (props) => {
     },
   }
 
-  let myFormRef = null
-
-  const onEnterPress = (e) => {
-    if (e.code === 'Enter') {
-      myFormRef.submit()
-    }
-  }
-
   return (
     <>
-      <nav className='nav'>
-        <div className='nav-container'>
-          <a href='/'>
-            <h1 className='logo'>Logo</h1>
-          </a>
-          <form ref={(input) => (myFormRef = input)}>
-            <input
-              type='text'
-              className='search-bar'
-              name='search'
-              placeholder='search'
-              onKeyDown={onEnterPress}
-            />
-          </form>
-          <div className='nav-utils'>
-            <i className='fa fa-search search'></i>
-            <i className='fa fa-shopping-cart cart'></i>
-            <a href='/login' className='login'>
-              <img src={avatar} alt='avatar' className='avatar' />
-              <p>login</p>
-            </a>
-          </div>
-        </div>
-      </nav>
+      <Header value='' />
 
       <div className='container'>
         <section className='promo'>
@@ -229,94 +199,7 @@ const App = (props) => {
         </div>
       </div>
 
-      <footer>
-        <div className='footer-container'>
-          <div className='footer-content subscribe'>
-            <h3>Subscribe</h3>
-            <hr />
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu,
-              nibh commodo maecenas sed.
-            </p>
-            <form>
-              <input
-                type='text'
-                placeholder='Email'
-                className='subscribe-email'
-                name='email'
-              />
-              <br />
-              <button type='submit' className='subscribe-submit'>
-                Send
-              </button>
-            </form>
-          </div>
-          <div className='footer-content contact'>
-            <h3>Contact</h3>
-            <hr />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nulla
-              sunt illum asperiores autem aliquam accusamus? Vero blanditiis
-              nostrum voluptatem, facere, debitis velit fugiat deleniti quae
-              distinctio iusto possimus. Doloremque!
-            </p>
-          </div>
-          <div className='footer-content faq'>
-            <h3>FAQ</h3>
-            <hr />
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus,
-            earum quas eaque adipisci, assumenda dicta sint dolor quos in hic
-            blanditiis voluptas corrupti
-          </div>
-          <div className='footer-content socials'>
-            <h3>Stay Connected</h3>
-            <hr />
-            <div>
-              <a
-                href='https://www.instagram.com'
-                target='_blank'
-                rel='noreferrer noopener'
-              >
-                <i className='fa fa-instagram'>&nbsp;</i>
-                <span>Instagram</span>
-              </a>
-            </div>
-            <div>
-              <a
-                href='https://www.facebook.com'
-                target='_blank'
-                rel='noreferrer noopener'
-              >
-                <i className='fa fa-facebook'>&nbsp;</i>
-                <span>Facebook</span>
-              </a>
-            </div>
-            <div>
-              <a
-                href='https://www.twitter.com'
-                target='_blank'
-                rel='noreferrer noopener'
-              >
-                <i className='fa fa-twitter'>&nbsp;</i>
-                <span>Twitter</span>
-              </a>
-            </div>
-            <div>
-              <a
-                href='https://www.youtube.com'
-                target='_blank'
-                rel='noreferrer noopener'
-              >
-                <i className='fa fa-youtube'>&nbsp;</i>
-                <span>Youtube</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <p className='copyright'>
-          Copyright 2021 Tritera Erlangga. All Rights Reserved
-        </p>
-      </footer>
+      <Footer />
     </>
   )
 }
