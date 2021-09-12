@@ -12,30 +12,30 @@ const App = (props) => {
     desktop: {
       breakpoint: {
         max: 3000,
-        min: 1070,
+        min: 1080,
       },
       items: 4,
       partialVisibilityGutter: 40,
     },
     tablet: {
       breakpoint: {
-        max: 1070,
-        min: 820,
+        max: 1080,
+        min: 830,
       },
       items: 3,
       partialVisibilityGutter: 30,
     },
     mobile: {
       breakpoint: {
-        max: 820,
-        min: 560,
+        max: 830,
+        min: 570,
       },
       items: 2,
       partialVisibilityGutter: 30,
     },
     xs: {
       breakpoint: {
-        max: 560,
+        max: 570,
         min: 0,
       },
       items: 1,
@@ -141,10 +141,26 @@ const App = (props) => {
               slidesToSlide={1}
               swipeable
             >
-              <Product />
-              <Product />
-              <Product />
-              <Product />
+              <Product
+                image='/img/products/backpack/aether-70-grey-1.jpg'
+                title='Aether 70'
+                price='330'
+              />
+              <Product
+                image='/img/products/backpack/atmos-ag-65-grey-1.jpg'
+                title='Atmos AG 65'
+                price='300'
+              />
+              <Product
+                image='/img/products/backpack/kajka-75-1.jpg'
+                title='Kajka 75'
+                price='450'
+              />
+              <Product
+                image='/img/products/backpack/aircontact-pro-70+15-1.png'
+                title='Aircontact 70'
+                price='300'
+              />
               <Product />
               <Product />
             </Carousel>
@@ -173,17 +189,34 @@ const App = (props) => {
               slidesToSlide={1}
               swipeable
             >
-              <Product />
-              <Product />
-              <Product />
-              <Product />
+              <Product
+                image='/img/products/backpack/aether-70-grey-1.jpg'
+                title='Aether 70'
+                price='330'
+              />
+              <Product
+                image='/img/products/backpack/aircontact-pro-70+15-1.png'
+                title='Aircontact 70'
+                price='300'
+              />
+              <Product
+                image='/img/products/backpack/atmos-ag-65-grey-1.jpg'
+                title='Atmos AG 65'
+                price='300'
+              />
+              <Product
+                image='/img/products/backpack/kajka-75-1.jpg'
+                title='Kajka 75'
+                price='450'
+              />
+
               <Product />
               <Product />
             </Carousel>
           </div>
 
           <div className='center'>
-            <a href='/' className='btn-outline'>
+            <a href='/products' className='btn-outline'>
               View All
             </a>
           </div>
@@ -289,7 +322,19 @@ const App = (props) => {
 }
 
 const Product = (props) => {
-  return <div className='card'></div>
+  return (
+    <div className='card'>
+      <div className='image-container'>
+        <img src={props.image} alt='products' className='product-image' />
+      </div>
+      <div className='product-desc'>
+        <p>
+          <strong>{props.title}</strong>
+        </p>
+        <p>$ {props.price}</p>
+      </div>
+    </div>
+  )
 }
 
 const mapStateToProps = (state) => {

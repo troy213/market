@@ -175,6 +175,30 @@ footer {
   height: 300px;
   min-width: 200px;
   max-width: 250px;
+  box-shadow: 5px 0px 5px 0 rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.image-container {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: white;
+}
+
+.product-image {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+}
+
+.product-desc {
+  margin: 0 1em;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Services section */
