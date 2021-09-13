@@ -1,12 +1,18 @@
-.sign-up {
+.sign-up-container {
+  min-width: 350px;
   width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.sign-up-container {
-  margin: 2em auto;
+.sign-up-content {
+  margin: 1em auto;
   display: flex;
   flex-direction: column;
   width: 50%;
+  max-width: 720px;
 }
 
 .sign-up-input {

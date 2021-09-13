@@ -22,20 +22,19 @@ const Header = (props) => {
       <nav className='nav'>
         <div className='nav-container'>
           <a href='/'>
-            <h1 className='logo'>Logo</h1>
+            <h1 className='logo'>Indosummit</h1>
           </a>
-          <input
-            type='text'
-            className='search-bar'
-            name='search'
-            placeholder='search'
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            onKeyDown={onEnterPress}
-          />
+          <div className='search-bar-desktop'>
+            <SearchBar
+              value={searchValue}
+              handleChange={(e) => setSearchValue(e.target.value)}
+              onEnter={onEnterPress}
+            />
+          </div>
           <div className='nav-utils'>
-            <i className='fa fa-search search'></i>
-            <i className='fa fa-shopping-cart cart'></i>
+            <a href='/cart'>
+              <i className='fa fa-shopping-cart cart'></i>
+            </a>
             <div className='user' onClick={() => setIsOpen(true)}>
               <img src={avatar} alt='avatar' className='avatar' />
               <strong>Login</strong>
@@ -43,7 +42,28 @@ const Header = (props) => {
           </div>
         </div>
       </nav>
+      <div className='search-bar-mobile'>
+        <SearchBar
+          value={searchValue}
+          handleChange={(e) => setSearchValue(e.target.value)}
+          onEnter={onEnterPress}
+        />
+      </div>
     </>
+  )
+}
+
+const SearchBar = (props) => {
+  return (
+    <input
+      type='text'
+      className='search-bar'
+      name='search'
+      placeholder='search'
+      value={props.value}
+      onChange={props.handleChange}
+      onKeyDown={props.onEnter}
+    />
   )
 }
 

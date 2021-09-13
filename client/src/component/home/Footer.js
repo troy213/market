@@ -37,9 +37,11 @@ const Footer = () => {
         <div className='footer-content faq'>
           <h3>FAQ</h3>
           <hr />
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus,
-          earum quas eaque adipisci, assumenda dicta sint dolor quos in hic
-          blanditiis voluptas corrupti
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus,
+            earum quas eaque adipisci, assumenda dicta sint dolor quos in hic
+            blanditiis voluptas corrupti
+          </p>
         </div>
         <div className='footer-content socials'>
           <h3>Stay Connected</h3>

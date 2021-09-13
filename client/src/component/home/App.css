@@ -16,6 +16,10 @@ body {
   font-family: 'Lato', 'Roboto', sans-serif;
 }
 
+p {
+  line-height: 1.6;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -83,7 +87,6 @@ footer {
   display: flex;
   align-items: center;
   height: 90px;
-  margin-bottom: 1em;
 }
 
 .nav-container {
@@ -105,14 +108,25 @@ footer {
 }
 
 .search-bar {
-  display: none;
+  margin: 0 1em;
+  border-radius: 5px;
+  border: 0;
+  padding: 1em;
+  height: 40px;
+  width: 250px;
 }
 
-.search {
-  color: #333;
-  display: block;
-  font-size: 25px;
-  margin-right: 1rem;
+.search-bar-mobile {
+  display: flex;
+  height: 60px;
+  min-width: 360px;
+  background: #ddd;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar-desktop {
+  display: none;
 }
 
 .cart {
@@ -135,6 +149,7 @@ footer {
 /* Promo Section */
 
 .promo {
+  margin-top: 1em;
   display: flex;
   flex-direction: column;
 }
@@ -152,7 +167,7 @@ footer {
 }
 
 .main-promo {
-  padding: 1em;
+  padding: 2em;
   height: 400px;
 }
 
@@ -345,18 +360,19 @@ footer {
     width: 100%;
   }
 
-  .search {
-    display: none;
+  .search-bar {
+    margin: 0;
+    width: 100%;
   }
 
-  .search-bar {
+  .search-bar-desktop {
     display: block;
-    border-radius: 5px;
-    border: 0;
-    padding: 1em;
-    height: 40px;
-    width: 300px;
-    max-width: 300px;
+    flex-grow: 1;
+    padding: 0 1.5em;
+  }
+
+  .search-bar-mobile {
+    display: none;
   }
 
   .main h2 {
