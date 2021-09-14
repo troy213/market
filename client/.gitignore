@@ -13,6 +13,7 @@
 
 # misc
 /public/img
+/src/assets
 .DS_Store
 .env
 .env.local

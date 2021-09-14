@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from './Modal'
 import Login from './Login'
 import avatar from '../../assets/avatar-default.jpg'
+import './Header.css'
 
 const Header = (props) => {
   const [searchValue, setSearchValue] = useState(props.value)
@@ -43,11 +44,13 @@ const Header = (props) => {
         </div>
       </nav>
       <div className='search-bar-mobile'>
-        <SearchBar
-          value={searchValue}
-          handleChange={(e) => setSearchValue(e.target.value)}
-          onEnter={onEnterPress}
-        />
+        <div className='center'>
+          <SearchBar
+            value={searchValue}
+            handleChange={(e) => setSearchValue(e.target.value)}
+            onEnter={onEnterPress}
+          />
+        </div>
       </div>
     </>
   )

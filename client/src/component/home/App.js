@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Header from './Header'
 import Footer from './Footer'
+import MainPromoImg from '../../assets/kajka-75.png'
+import SidePromoRight from '../../assets/eiger-down-jacket.png'
+import SidePromoLeft from '../../assets/cloud-up-3.png'
 import 'font-awesome/css/font-awesome.min.css'
 import './App.css'
 
@@ -29,14 +32,14 @@ const App = () => {
     mobile: {
       breakpoint: {
         max: 830,
-        min: 570,
+        min: 575,
       },
       items: 2,
       partialVisibilityGutter: 30,
     },
     xs: {
       breakpoint: {
-        max: 570,
+        max: 575,
         min: 0,
       },
       items: 1,
@@ -52,36 +55,55 @@ const App = () => {
         <section className='promo'>
           <div className='main-promo'>
             <div className='promo-content'>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolorum, placeat aspernatur ad tempora quisquam rem deserunt.
-              </p>
-              <div>
+              <div className='promo-content-desc'>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Dolorum, placeat aspernatur ad tempora quisquam rem deserunt.
+                </p>
                 <a href='/' className='btn-outline'>
                   Buy Now
                 </a>
               </div>
+              <img
+                src={MainPromoImg}
+                alt='main-promo'
+                className='promo-content-image'
+              />
             </div>
           </div>
           <div className='side-promo'>
-            <div className='side-promo-item'>
+            <div className='side-promo-item first'>
               <div className='promo-content'>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <div>
+                <div className='promo-content-desc'>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
                   <a href='/' className='btn-outline'>
                     Buy Now
                   </a>
                 </div>
+                <img
+                  src={SidePromoLeft}
+                  alt='side-promo'
+                  className='promo-content-image'
+                />
               </div>
             </div>
-            <div className='side-promo-item'>
+            <div className='side-promo-item second'>
               <div className='promo-content'>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <div>
+                <div className='promo-content-desc'>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
                   <a href='/' className='btn-outline'>
                     Buy Now
                   </a>
                 </div>
+                <img
+                  src={SidePromoRight}
+                  alt='side-promo'
+                  className='promo-content-image'
+                />
               </div>
             </div>
           </div>
@@ -186,7 +208,7 @@ const App = () => {
           </div>
 
           <div className='center'>
-            <a href='/products' className='btn-outline'>
+            <a href='/products' className='btn-outline dark'>
               View All
             </a>
           </div>
