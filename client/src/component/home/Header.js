@@ -22,7 +22,7 @@ const Header = (props) => {
       <nav className='nav'>
         <div className='nav-container'>
           <a href='/'>
-            <h1 className='logo'>Indosummit</h1>
+            <h1 className='logo'>Outstore</h1>
           </a>
           <div className='search-bar-desktop'>
             <SearchBar

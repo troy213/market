@@ -1,6 +1,145 @@
 .cart-container {
   min-height: 100vh;
+  min-width: 360px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: #d2ddeb;
+}
+
+.cart-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 1em auto;
+  width: 100%;
+  max-width: 980px;
+  align-items: center;
+}
+
+.cart-wrapper h2 {
+  margin-bottom: 0.5em;
+}
+
+.cart-subtotal-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 225px;
+  width: 80%;
+  height: 200px;
+  margin: 1em 0 0 0;
+  padding: 1em;
+  background: white;
+  border-radius: 5px;
+}
+
+.cart-subtotal-content div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-subtotal-content button {
+  margin-top: 1em;
+  border: 0;
+  border-radius: 5px;
+  height: 30px;
+  color: whitesmoke;
+  background: var(--clr-midtone);
+  font-weight: bolder;
+}
+
+.cart-content {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1em;
+  padding: 1em;
+  background: white;
+  border-radius: 5px;
+}
+
+.cart-content-list hr:last-child {
+  display: none;
+}
+
+.cart-content hr {
+  margin: 1em 0;
+}
+
+.cart-product-container {
+  position: relative;
+  display: flex;
+}
+
+.cart-product-img-container {
+  background: white;
+}
+
+.cart-product-img {
+  margin-right: 1em;
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+}
+
+.cart-product-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart-product-qty {
+  display: flex;
+  align-items: center;
+}
+
+.cart-product-qty p {
+  margin-right: 1em;
+}
+
+.cart-product-qty button {
+  height: 20px;
+  width: 20px;
+  border: 0;
+  background: var(--clr-midtone);
+  color: whitesmoke;
+  font-weight: bolder;
+}
+
+.cart-product-qty input {
+  min-width: 30px;
+  width: 30px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.cart-product-cancel {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 850px) {
+  .cart-wrapper {
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .cart-content {
+    width: 100%;
+    max-width: 980px;
+  }
+
+  .cart-product-img {
+    height: 200px;
+    width: 200px;
+  }
+
+  .cart-subtotal-content {
+    width: 25%;
+    height: 200px;
+    margin: 0;
+  }
 }
