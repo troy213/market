@@ -56,10 +56,8 @@ const App = () => {
           <div className='main-promo'>
             <div className='promo-content'>
               <div className='promo-content-desc'>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Dolorum, placeat aspernatur ad tempora quisquam rem deserunt.
-                </p>
+                <h3>Carrier</h3>
+                <p>Find your best suitable pack for your hike</p>
                 <a href='/' className='btn-outline'>
                   Buy Now
                 </a>
@@ -75,9 +73,8 @@ const App = () => {
             <div className='side-promo-item first'>
               <div className='promo-content'>
                 <div className='promo-content-desc'>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
+                  <h3>Tent</h3>
+                  <p>Light yet durable for the best hike experience</p>
                   <a href='/' className='btn-outline'>
                     Buy Now
                   </a>
@@ -92,9 +89,8 @@ const App = () => {
             <div className='side-promo-item second'>
               <div className='promo-content'>
                 <div className='promo-content-desc'>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
+                  <h3>Jacket</h3>
+                  <p>Keep your body warm with high fill power down jacket</p>
                   <a href='/' className='btn-outline'>
                     Buy Now
                   </a>

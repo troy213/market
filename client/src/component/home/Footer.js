@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Footer.css'
 
 const Footer = () => {
   return (
     <footer>
       <div className='footer-container'>
-        <div className='footer-content subscribe'>
-          <h3>Subscribe</h3>
-          <hr />
+        <Accordion title='Subscribe'>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu, nibh
             commodo maecenas sed.
@@ -24,7 +22,7 @@ const Footer = () => {
               Send
             </button>
           </form>
-        </div>
+        </Accordion>
         <div className='footer-content contact'>
           <h3>Contact</h3>
           <hr />
@@ -93,6 +91,33 @@ const Footer = () => {
         Copyright 2021 Tritera Erlangga. All Rights Reserved
       </p>
     </footer>
+  )
+}
+
+const Accordion = (props) => {
+  const [isActive, setIsActive] = useState(false)
+
+  return (
+    <div className='accordion-item'>
+      <div
+        className='accordion-title'
+        onClick={() => {
+          setIsActive(!isActive)
+          console.log(props)
+        }}
+      >
+        <div>
+          <h3>{props.title}</h3>
+          {isActive ? (
+            <i className='fa fa-chevron-up'></i>
+          ) : (
+            <i className='fa fa-chevron-down'></i>
+          )}
+          <hr />
+        </div>
+        {isActive && <div className='accordion-content'>{props.content}</div>}
+      </div>
+    </div>
   )
 }
 

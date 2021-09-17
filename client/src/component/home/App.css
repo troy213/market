@@ -127,7 +127,9 @@ button,
 
 .promo-content {
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
@@ -136,13 +138,29 @@ button,
   margin-top: 2em;
 }
 
+.side-promo-item .promo-content div {
+  margin-top: 1em;
+}
+
 .promo-content-desc {
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 50%;
+  width: 90%;
+}
+
+.promo-content-desc p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 52px;
+  white-space: pre-wrap;
 }
 
 .promo-content-image {
   width: 50%;
-  max-height: 100%;
+  max-height: 50%;
   object-fit: contain;
 }
 
@@ -160,7 +178,7 @@ button,
 
 .side-promo-item {
   padding: 1em;
-  height: 300px;
+  height: 350px;
 }
 
 .side-promo-item.first {
@@ -273,6 +291,38 @@ button,
 }
 
 @media (min-width: 706px) {
+  .promo-content {
+    flex-direction: row;
+  }
+
+  .promo-content div {
+    margin-top: 0;
+  }
+
+  .side-promo-item .promo-content div {
+    margin-top: 0;
+  }
+
+  .promo-content-image {
+    max-height: 100%;
+  }
+
+  .promo-content-desc {
+    align-items: stretch;
+    text-align: initial;
+    justify-content: center;
+    height: 70%;
+    width: 50%;
+  }
+
+  .promo-content-desc p {
+    max-height: 77px;
+  }
+
+  .main-promo {
+    padding: 2em;
+  }
+
   .side-promo {
     flex-direction: row;
   }
