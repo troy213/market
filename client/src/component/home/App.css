@@ -95,12 +95,9 @@ a {
 button,
 .user,
 .modal-close,
-.chevron {
+.fa-chevron-up,
+.fa-chevron-down {
   cursor: pointer;
-}
-
-.services .card {
-  background: var(--clr-midtone);
 }
 
 .main-promo,
@@ -256,13 +253,32 @@ button,
 /* Services section */
 
 .services {
+  margin: 2em 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.services .card {
+.services-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 1em;
+  max-width: 250px;
+}
+
+.services-item h3 {
+  color: var(--clr-midtone);
+}
+
+.services-item p {
+  text-align: justify;
+}
+
+.services-img {
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 1em;
 }
 
 /* Login section */

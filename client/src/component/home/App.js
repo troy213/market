@@ -5,6 +5,9 @@ import Footer from './Footer'
 import MainPromoImg from '../../assets/kajka-75.png'
 import SidePromoRight from '../../assets/eiger-down-jacket.png'
 import SidePromoLeft from '../../assets/cloud-up-3.png'
+import Package from '../../assets/package.svg'
+import Save from '../../assets/save.svg'
+import Service from '../../assets/services.svg'
 import 'font-awesome/css/font-awesome.min.css'
 import './App.css'
 
@@ -211,9 +214,30 @@ const App = () => {
         </main>
 
         <div className='services'>
-          <div className='card'></div>
-          <div className='card'></div>
-          <div className='card'></div>
+          <div className='services-item'>
+            <img src={Package} alt='box' className='services-img' />
+            <h3>Satisfactory Guarantee</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
+              consequuntur hic facilis perferendis
+            </p>
+          </div>
+          <div className='services-item'>
+            <img src={Save} alt='save' className='services-img' />
+            <h3>Extra Cashback</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
+              consequuntur hic facilis perferendis
+            </p>
+          </div>
+          <div className='services-item'>
+            <img src={Service} alt='service' className='services-img' />
+            <h3>Customer Service</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
+              consequuntur hic facilis perferendis
+            </p>
+          </div>
         </div>
       </div>
 

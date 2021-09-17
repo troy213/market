@@ -5,26 +5,47 @@ footer {
   min-width: 360px;
 }
 
-.footer-content {
-  margin-bottom: 1em;
+.footer-container {
+  margin: 0 auto;
+  max-width: 980px;
 }
 
-.footer-content h3 {
+.accordion-title div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+}
+
+.accordion-title h3 {
   color: var(--clr-light);
 }
 
-.footer-content hr {
+.accordion-title i {
+  margin-left: 1em;
+}
+
+.accordion-title hr {
   margin: 0.25em 0 0.5em 0;
   border: 1px solid var(--clr-midtone);
 }
 
-.footer-content a {
+.accordion-content a {
   color: var(--clr-secondary);
+}
+
+.accordion-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-item {
+  margin-bottom: 1em;
 }
 
 .subscribe-email {
   margin-top: 0.5em;
   height: 25px;
+  max-width: 200px;
   padding-left: 0.5em;
   border: 0;
 }
@@ -51,8 +72,9 @@ footer {
     margin-bottom: 1em;
   }
 
-  .footer-content {
-    width: 200px;
+  .accordion-item {
+    min-width: 150px;
+    max-width: 200px;
     margin: 0 0.5em;
   }
 }
