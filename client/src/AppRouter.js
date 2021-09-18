@@ -5,6 +5,8 @@ import Search from './component/page/Search'
 import Signup from './component/page/Signup'
 import Cart from './component/page/Cart'
 import Products from './component/page/Products'
+import Item from './component/page/Item'
+import Error from './component/page/Error'
 import store from './store'
 
 const AppRouter = () => (
@@ -17,6 +19,8 @@ const AppRouter = () => (
       <Route path='/signup' component={Signup} />
       <Route path='/cart' component={Cart} />
       <Route path='/products' component={Products} />
+      <Route path='/products/:name' component={Item} />
+      <Route path='*' component={Error} />
     </Switch>
   </Router>
 )

@@ -61,7 +61,7 @@ const App = () => {
               <div className='promo-content-desc'>
                 <h3>Carrier</h3>
                 <p>Find your best suitable pack for your hike</p>
-                <a href='/' className='btn-outline'>
+                <a href='/products?categories=carrier' className='btn-outline'>
                   Buy Now
                 </a>
               </div>
@@ -78,7 +78,7 @@ const App = () => {
                 <div className='promo-content-desc'>
                   <h3>Tent</h3>
                   <p>Light yet durable for the best hike experience</p>
-                  <a href='/' className='btn-outline'>
+                  <a href='/products?categories=tent' className='btn-outline'>
                     Buy Now
                   </a>
                 </div>
@@ -94,7 +94,7 @@ const App = () => {
                 <div className='promo-content-desc'>
                   <h3>Jacket</h3>
                   <p>Keep your body warm with high fill power down jacket</p>
-                  <a href='/' className='btn-outline'>
+                  <a href='/products?categories=jacket' className='btn-outline'>
                     Buy Now
                   </a>
                 </div>
