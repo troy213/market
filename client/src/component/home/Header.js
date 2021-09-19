@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Modal from './Modal'
 import Login from './Login'
-import avatar from '../../assets/avatar-default.jpg'
 import './Header.css'
 
 const Header = (props) => {
@@ -36,9 +35,8 @@ const Header = (props) => {
             <a href='/cart'>
               <i className='fa fa-shopping-cart cart'></i>
             </a>
-            <div className='user' onClick={() => setIsOpen(true)}>
-              <img src={avatar} alt='avatar' className='avatar' />
-              <strong>Login</strong>
+            <div onClick={() => setIsOpen(true)}>
+              <button className='btn-login'>Login</button>
             </div>
           </div>
         </div>

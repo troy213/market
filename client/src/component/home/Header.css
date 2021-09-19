@@ -63,10 +63,14 @@
   margin-right: 0.5rem;
 }
 
-.user {
-  display: flex;
-  align-items: center;
+.btn-login {
+  border: 4px solid var(--clr-light);
+  border-radius: 5px;
+  background-color: var(--clr-primary);
   color: var(--clr-light);
+  font-weight: bolder;
+  width: fit-content;
+  padding: 0.5em 1em;
 }
 
 @media (min-width: 706px) {

@@ -8,6 +8,7 @@ import SidePromoLeft from '../../assets/cloud-up-3.png'
 import Package from '../../assets/package.svg'
 import Save from '../../assets/save.svg'
 import Service from '../../assets/services.svg'
+import { Link } from 'react-router-dom'
 import 'font-awesome/css/font-awesome.min.css'
 import './App.css'
 
@@ -133,21 +134,25 @@ const App = () => {
               swipeable
             >
               <Product
+                url='aether-70'
                 image='/img/products/backpack/aether-70-grey-1.jpg'
                 title='Aether 70'
                 price='330'
               />
               <Product
+                url='atmos-ag-65'
                 image='/img/products/backpack/atmos-ag-65-grey-1.jpg'
                 title='Atmos AG 65'
                 price='300'
               />
               <Product
+                url='kajka-75'
                 image='/img/products/backpack/kajka-75-1.jpg'
                 title='Kajka 75'
                 price='450'
               />
               <Product
+                url='aircontact-70'
                 image='/img/products/backpack/aircontact-pro-70+15-1.png'
                 title='Aircontact 70'
                 price='300'
@@ -181,21 +186,25 @@ const App = () => {
               swipeable
             >
               <Product
+                url='aether-70'
                 image='/img/products/backpack/aether-70-grey-1.jpg'
                 title='Aether 70'
                 price='330'
               />
               <Product
+                url='aircontact-70'
                 image='/img/products/backpack/aircontact-pro-70+15-1.png'
                 title='Aircontact 70'
                 price='300'
               />
               <Product
+                url='atmos-ag-65'
                 image='/img/products/backpack/atmos-ag-65-grey-1.jpg'
                 title='Atmos AG 65'
                 price='300'
               />
               <Product
+                url='kajka-75'
                 image='/img/products/backpack/kajka-75-1.jpg'
                 title='Kajka 75'
                 price='450'
@@ -248,17 +257,28 @@ const App = () => {
 
 const Product = (props) => {
   return (
-    <div className='card'>
-      <div className='image-container'>
-        <img src={props.image} alt='products' className='product-image' />
+    <Link
+      to={{
+        pathname: `/products/${props.url}`,
+        state: {
+          image: `${props.image}`,
+          title: `${props.title}`,
+          price: `${props.price}`,
+        },
+      }}
+    >
+      <div className='card'>
+        <div className='image-container'>
+          <img src={props.image} alt='products' className='product-image' />
+        </div>
+        <div className='product-desc'>
+          <p>
+            <strong>{props.title}</strong>
+          </p>
+          <p>$ {props.price}</p>
+        </div>
       </div>
-      <div className='product-desc'>
-        <p>
-          <strong>{props.title}</strong>
-        </p>
-        <p>$ {props.price}</p>
-      </div>
-    </div>
+    </Link>
   )
 }
 

@@ -15,10 +15,10 @@ const AppRouter = () => (
       <Route path='/' exact>
         <App store={store} />
       </Route>
-      <Route path='/search' component={Search} />
-      <Route path='/signup' component={Signup} />
-      <Route path='/cart' component={Cart} />
-      <Route path='/products' component={Products} />
+      <Route path='/search' exact component={Search} />
+      <Route path='/signup' exact component={Signup} />
+      <Route path='/cart' exact component={Cart} />
+      <Route path='/products' exact component={Products} />
       <Route path='/products/:name' component={Item} />
       <Route path='*' component={Error} />
     </Switch>
