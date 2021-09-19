@@ -20,14 +20,14 @@ const App = () => {
     desktop: {
       breakpoint: {
         max: 3000,
-        min: 1080,
+        min: 1090,
       },
       items: 4,
       partialVisibilityGutter: 40,
     },
     tablet: {
       breakpoint: {
-        max: 1080,
+        max: 1090,
         min: 830,
       },
       items: 3,
@@ -154,7 +154,7 @@ const App = () => {
               <Product
                 url='aircontact-70'
                 image='/img/products/backpack/aircontact-pro-70+15-1.png'
-                title='Aircontact 70'
+                title='Deuter Aircontact Pro 70+15'
                 price='300'
               />
               <Product />
@@ -255,7 +255,7 @@ const App = () => {
   )
 }
 
-const Product = (props) => {
+export const Product = (props) => {
   return (
     <Link
       to={{
@@ -272,9 +272,7 @@ const Product = (props) => {
           <img src={props.image} alt='products' className='product-image' />
         </div>
         <div className='product-desc'>
-          <p>
-            <strong>{props.title}</strong>
-          </p>
+          <p>{props.title}</p>
           <p>$ {props.price}</p>
         </div>
       </div>
