@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { useFetch } from '../../hooks/UseFetch'
 import Header from './Header'
 import Footer from './Footer'
 import MainPromoImg from '../../assets/kajka-75.png'
@@ -8,7 +10,7 @@ import SidePromoLeft from '../../assets/cloud-up-3.png'
 import Package from '../../assets/package.svg'
 import Save from '../../assets/save.svg'
 import Service from '../../assets/services.svg'
-import { Link } from 'react-router-dom'
+
 import 'font-awesome/css/font-awesome.min.css'
 import './App.css'
 
@@ -51,6 +53,8 @@ const App = () => {
     },
   }
 
+  const productList = useFetch('http://localhost:5000/')
+
   return (
     <>
       <Header value='' />
@@ -63,7 +67,7 @@ const App = () => {
                 <h3>Carrier</h3>
                 <p>Find your best suitable pack for your hike</p>
                 <a href='/products?categories=carrier' className='btn-outline'>
-                  Buy Now
+                  Shop Now
                 </a>
               </div>
               <img
@@ -80,7 +84,7 @@ const App = () => {
                   <h3>Tent</h3>
                   <p>Light yet durable for the best hike experience</p>
                   <a href='/products?categories=tent' className='btn-outline'>
-                    Buy Now
+                    Shop Now
                   </a>
                 </div>
                 <img
@@ -95,8 +99,11 @@ const App = () => {
                 <div className='promo-content-desc'>
                   <h3>Jacket</h3>
                   <p>Keep your body warm with high fill power down jacket</p>
-                  <a href='/products?categories=jacket' className='btn-outline'>
-                    Buy Now
+                  <a
+                    href='/products?categories=apparel'
+                    className='btn-outline'
+                  >
+                    Shop Now
                   </a>
                 </div>
                 <img
@@ -157,8 +164,12 @@ const App = () => {
                 title='Deuter Aircontact Pro 70+15'
                 price='300'
               />
-              <Product />
-              <Product />
+              <Product
+                url='cloud-up-3'
+                image='/img/products/tent/cloud-up-3.jpg'
+                title='Cloud Up 3'
+                price='150'
+              />
             </Carousel>
           </div>
 
@@ -185,33 +196,24 @@ const App = () => {
               slidesToSlide={1}
               swipeable
             >
-              <Product
-                url='aether-70'
-                image='/img/products/backpack/aether-70-grey-1.jpg'
-                title='Aether 70'
-                price='330'
-              />
-              <Product
-                url='aircontact-70'
-                image='/img/products/backpack/aircontact-pro-70+15-1.png'
-                title='Aircontact 70'
-                price='300'
-              />
-              <Product
-                url='atmos-ag-65'
-                image='/img/products/backpack/atmos-ag-65-grey-1.jpg'
-                title='Atmos AG 65'
-                price='300'
-              />
-              <Product
-                url='kajka-75'
-                image='/img/products/backpack/kajka-75-1.jpg'
-                title='Kajka 75'
-                price='450'
-              />
-
-              <Product />
-              <Product />
+              {productList.isLoading ? (
+                <h1>Loading</h1>
+              ) : productList.isError ? (
+                <h1>Error</h1>
+              ) : (
+                productList.data.map((value) => {
+                  const { id, url, image, title, price } = value
+                  return (
+                    <Product
+                      ket={id}
+                      url={url}
+                      image={image}
+                      title={title}
+                      price={price}
+                    />
+                  )
+                })
+              )}
             </Carousel>
           </div>
 

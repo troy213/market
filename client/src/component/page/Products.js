@@ -1,10 +1,13 @@
 import React from 'react'
 import { Product } from '../home/App'
+import { useFetch } from '../../hooks/UseFetch'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
 import './Products.css'
 
 const Products = () => {
+  const productList = useFetch('http://localhost:5000')
+
   return (
     <div className='products-container'>
       <div>
@@ -23,30 +26,24 @@ const Products = () => {
           </div>
         </div>
         <div className='products-content-list'>
-          <Product
-            url='aether-70'
-            image='/img/products/backpack/aether-70-grey-1.jpg'
-            title='Aether 70'
-            price='330'
-          />
-          <Product
-            url='atmos-ag-65'
-            image='/img/products/backpack/atmos-ag-65-grey-1.jpg'
-            title='Atmos AG 65'
-            price='300'
-          />
-          <Product
-            url='kajka-75'
-            image='/img/products/backpack/kajka-75-1.jpg'
-            title='Kajka 75'
-            price='450'
-          />
-          <Product
-            url='aircontact-70'
-            image='/img/products/backpack/aircontact-pro-70+15-1.png'
-            title='Aircontact Pro 70+15'
-            price='300'
-          />
+          {productList.isLoading ? (
+            <h1>Loading</h1>
+          ) : productList.isError ? (
+            <h1>Error</h1>
+          ) : (
+            productList.data.map((value) => {
+              const { id, url, image, title, price } = value
+              return (
+                <Product
+                  ket={id}
+                  url={url}
+                  image={image}
+                  title={title}
+                  price={price}
+                />
+              )
+            })
+          )}
         </div>
       </div>
       <Footer />
