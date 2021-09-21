@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
 import { Product } from '../home/App'
@@ -12,6 +12,47 @@ const Search = () => {
   const name = new URLSearchParams(search).get('query')
 
   const productList = useFetch('http://localhost:5000')
+  const [sort, setSort] = useState('default')
+
+  const compare = (a, b) => {
+    if (a.title < b.title) {
+      return -1
+    }
+    if (a.title > b.title) {
+      return 1
+    }
+    return 0
+  }
+
+  const lowToHigh = (a, b) => {
+    if (a.price < b.price) {
+      return -1
+    }
+    if (a.price > b.price) {
+      return 1
+    }
+    return 0
+  }
+
+  const HighToLow = (a, b) => {
+    if (a.price > b.price) {
+      return -1
+    }
+    if (a.price < b.price) {
+      return 1
+    }
+    return 0
+  }
+
+  React.useEffect(() => {
+    if (sort === 'lowToHigh') {
+      productList.data.sort(lowToHigh)
+    } else if (sort === 'highToLow') {
+      productList.data.sort(HighToLow)
+    } else {
+      productList.data.sort(compare)
+    }
+  }, [sort, productList])
 
   return (
     <div className='search-container'>
@@ -23,7 +64,12 @@ const Search = () => {
           <h3>Search result for: {name}</h3>
           <div className='products-content-sort'>
             <p>showing {productList.data.length} results</p>
-            <select name='sort' id='sort'>
+            <select
+              name='sort'
+              id='sort'
+              onChange={(e) => setSort(e.target.value)}
+              value={sort}
+            >
               <option value='default'>Default Sort</option>
               <option value='lowToHigh'>Price: low to high</option>
               <option value='highToLow'>Price: high to low</option>

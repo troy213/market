@@ -59,13 +59,13 @@ const CartProduct = (props) => {
     }
   }
 
-  const qtyIncrement = (e) => {
+  const qtyIncrement = () => {
     if (qty < 9) {
       setQty(qty + 1)
     }
   }
 
-  const qtyDecrement = (e) => {
+  const qtyDecrement = () => {
     if (qty > 1) {
       setQty(qty - 1)
     }
