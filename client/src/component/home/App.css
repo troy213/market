@@ -72,9 +72,12 @@ p {
   color: var(--clr-light);
 }
 
-.btn-outline.dark {
-  border: 5px solid var(--clr-midtone);
-  color: var(--clr-midtone);
+.btn-dark {
+  border: 5px solid var(--clr-primary);
+  border-radius: 5px;
+  background: var(--clr-primary);
+  color: var(--clr-light);
+  padding: 0.5em 2em;
 }
 
 a {

@@ -17,7 +17,7 @@ const Products = () => {
         <div className='products-content-title'>
           <h3>All Products</h3>
           <div className='products-content-sort'>
-            <p>showing 1 of 100 results</p>
+            <p>showing {productList.data.length} results</p>
             <select name='sort' id='sort'>
               <option value='default'>Default Sort</option>
               <option value='lowToHigh'>Price: low to high</option>
@@ -25,25 +25,30 @@ const Products = () => {
             </select>
           </div>
         </div>
-        <div className='products-content-list'>
-          {productList.isLoading ? (
-            <h1>Loading</h1>
-          ) : productList.isError ? (
-            <h1>Error</h1>
-          ) : (
-            productList.data.map((value) => {
-              const { id, url, image, title, price } = value
-              return (
-                <Product
-                  ket={id}
-                  url={url}
-                  image={image}
-                  title={title}
-                  price={price}
-                />
-              )
-            })
-          )}
+        <div className='center'>
+          <div className='products-content-list'>
+            {productList.isLoading ? (
+              <h1>Loading</h1>
+            ) : productList.isError ? (
+              <h1>Error</h1>
+            ) : (
+              productList.data.map((value) => {
+                const { id, url, image, title, price } = value
+                return (
+                  <Product
+                    ket={id}
+                    url={url}
+                    image={image}
+                    title={title}
+                    price={price}
+                  />
+                )
+              })
+            )}
+            <div className='content-fill'></div>
+            <div className='content-fill'></div>
+            <div className='content-fill'></div>
+          </div>
         </div>
       </div>
       <Footer />

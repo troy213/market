@@ -17,16 +17,19 @@ const Item = () => {
           <div className='item-img-container'>
             <img src={image} alt='item-img' className='item-img' />
           </div>
-          <div className='item-content-desc'>
-            <h3>{title}</h3>
-            <p>${price}</p>
-            <button>Add to Cart</button>
-            <h3>Description</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-              voluptatum vel sed ea vitae doloremque nemo quia impedit numquam,
-              mollitia odit eius et at rem laborum, quidem id eum ipsa.
-            </p>
+          <div className='center'>
+            <div className='item-content-desc'>
+              <h3>{title}</h3>
+              <p>${price}</p>
+              <button>Add to Cart</button>
+              <h3>Description</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                voluptatum vel sed ea vitae doloremque nemo quia impedit
+                numquam, mollitia odit eius et at rem laborum, quidem id eum
+                ipsa.
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -38,12 +38,12 @@
   gap: 1em;
 }
 
+.content-fill {
+  width: 202px;
+}
+
 @media (min-width: 706px) {
   .products-content-title {
     flex-direction: row;
-  }
-
-  .products-content-list {
-    justify-content: space-evenly;
   }
 }

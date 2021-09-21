@@ -20,6 +20,22 @@
   align-items: center;
 }
 
+.nav-utils-desktop {
+  display: none;
+}
+
+.nav-utils-mobile {
+  display: block;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.nav-utils-mobile > i {
+  color: var(--clr-light);
+  font-size: 30px;
+}
+
 .logo {
   font-size: xx-large;
   font-family: 'Kaushan Script', cursive;
@@ -31,19 +47,6 @@
   border: 0;
   padding: 1em;
   height: 40px;
-  width: 80%;
-}
-
-.search-bar-mobile {
-  display: flex;
-  height: 60px;
-  background: #5f7b9e;
-  justify-content: center;
-  align-items: center;
-  min-width: 360px;
-}
-
-.search-bar-mobile div {
   width: 80%;
 }
 
@@ -73,7 +76,67 @@
   padding: 0.5em 1em;
 }
 
+/* Sidenav */
+
+.sidenav-container {
+  position: fixed;
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+  right: -250px;
+  background: whitesmoke;
+  height: 100vh;
+  max-width: 250px;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 250ms ease-in;
+}
+
+.sidenav-container input {
+  border: 1px solid var(--clr-primary);
+}
+
+.sidenav-container > * {
+  margin: 0.5em 0;
+  transition: padding-left 250ms ease-in;
+}
+
+.sidenav-container button {
+  border: 0;
+  width: fit-content;
+  background: none;
+  font-size: 1rem;
+}
+
+.sidenav-container div:hover,
+.sidenav-container a:hover {
+  padding-left: 0.5em;
+}
+
+.sidenav-close {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.sidenav-container.active {
+  opacity: 1;
+  visibility: visible;
+  right: 0;
+}
+
 @media (min-width: 706px) {
+  .nav-utils-desktop {
+    display: block;
+  }
+
+  .nav-utils-mobile {
+    display: none;
+  }
+
   .search-bar {
     margin: 0;
     width: 100%;
@@ -85,7 +148,7 @@
     padding: 0 1.5em;
   }
 
-  .search-bar-mobile {
+  .sidenav-container {
     display: none;
   }
 }

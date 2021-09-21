@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import './Modal.css'
 
 const Modal = ({ open, children, onClose }) => {
@@ -6,7 +7,7 @@ const Modal = ({ open, children, onClose }) => {
     return null
   }
 
-  return (
+  return ReactDOM.createPortal(
     <div className='modal'>
       <div className='modal-container'>
         <span className='modal-close' onClick={onClose}>
@@ -14,7 +15,8 @@ const Modal = ({ open, children, onClose }) => {
         </span>
         {children}
       </div>
-    </div>
+    </div>,
+    document.getElementById('portal')
   )
 }
 

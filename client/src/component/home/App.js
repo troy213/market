@@ -218,7 +218,7 @@ const App = () => {
           </div>
 
           <div className='center'>
-            <a href='/products' className='btn-outline dark'>
+            <a href='/products' className='btn-dark'>
               View All
             </a>
           </div>
