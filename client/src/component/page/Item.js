@@ -12,7 +12,6 @@ const Item = () => {
     <div className='item-container'>
       <div>
         <Header value='' />
-        {/* content here */}
         <div className='item-content'>
           <div className='item-img-container'>
             <img src={image} alt='item-img' className='item-img' />

@@ -36,7 +36,7 @@ const Products = () => {
                 const { id, url, image, title, price } = value
                 return (
                   <Product
-                    ket={id}
+                    key={id}
                     url={url}
                     image={image}
                     title={title}

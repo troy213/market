@@ -205,7 +205,8 @@ const App = () => {
                   const { id, url, image, title, price } = value
                   return (
                     <Product
-                      ket={id}
+                      key={id}
+                      id={id}
                       url={url}
                       image={image}
                       title={title}
@@ -263,6 +264,7 @@ export const Product = (props) => {
       to={{
         pathname: `/products/${props.url}`,
         state: {
+          id: `${props.id}`,
           image: `${props.image}`,
           title: `${props.title}`,
           price: `${props.price}`,
