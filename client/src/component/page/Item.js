@@ -7,6 +7,25 @@ import './Item.css'
 const Item = () => {
   const location = useLocation()
   const { image, title, price } = location.state
+  const [qty, setQty] = React.useState(1)
+
+  const checkMaxLength = (e) => {
+    if (e.target.value.length > e.target.maxLength) {
+      e.target.value = e.target.value.slice(0, e.target.maxLength)
+    }
+  }
+
+  const qtyIncrement = (e) => {
+    if (qty < 9) {
+      setQty(qty + 1)
+    }
+  }
+
+  const qtyDecrement = (e) => {
+    if (qty > 1) {
+      setQty(qty - 1)
+    }
+  }
 
   return (
     <div className='item-container'>
@@ -20,6 +39,24 @@ const Item = () => {
             <div className='item-content-desc'>
               <h3>{title}</h3>
               <p>${price}</p>
+              <div className='cart-product-qty'>
+                <button className='border-radius-left' onClick={qtyDecrement}>
+                  -
+                </button>
+                <input
+                  type='number'
+                  min='1'
+                  max='9'
+                  maxLength='1'
+                  onInput={checkMaxLength}
+                  value={qty}
+                  onChange={(e) => setQty(e.target.value)}
+                  disabled
+                />
+                <button className='border-radius-right' onClick={qtyIncrement}>
+                  +
+                </button>
+              </div>
               <button>Add to Cart</button>
               <h3>Description</h3>
               <p>

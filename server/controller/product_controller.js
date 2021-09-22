@@ -15,13 +15,14 @@ const productGet = (req, res) => {
       if (err) throw err
       return res.status(200).json({ success: true, data: result })
     })
+  } else {
+    const { search } = req.query
+    const sql = `SELECT * FROM product WHERE name LIKE '%${search}%'`
+    db.query(sql, (err, result) => {
+      if (err) throw err
+      return res.status(200).json({ success: true, data: result })
+    })
   }
-  const { search } = req.query
-  const sql = 'SELECT * FROM product WHERE name=?'
-  db.query(sql, search, (err, result) => {
-    if (err) throw err
-    return res.status(200).json({ success: true, data: result })
-  })
 }
 
 const productGetId = (req, res) => {
