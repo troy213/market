@@ -6,7 +6,7 @@ import './Item.css'
 
 const Item = () => {
   const location = useLocation()
-  const { image, title, price } = location.state
+  const { name, price, image, description } = location.state
   const [qty, setQty] = React.useState(1)
 
   const checkMaxLength = (e) => {
@@ -15,13 +15,13 @@ const Item = () => {
     }
   }
 
-  const qtyIncrement = (e) => {
+  const qtyIncrement = () => {
     if (qty < 9) {
       setQty(qty + 1)
     }
   }
 
-  const qtyDecrement = (e) => {
+  const qtyDecrement = () => {
     if (qty > 1) {
       setQty(qty - 1)
     }
@@ -37,7 +37,7 @@ const Item = () => {
           </div>
           <div className='center'>
             <div className='item-content-desc'>
-              <h3>{title}</h3>
+              <h3>{name}</h3>
               <p>${price}</p>
               <div className='cart-product-qty'>
                 <button className='border-radius-left' onClick={qtyDecrement}>
@@ -59,12 +59,7 @@ const Item = () => {
               </div>
               <button>Add to Cart</button>
               <h3>Description</h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-                voluptatum vel sed ea vitae doloremque nemo quia impedit
-                numquam, mollitia odit eius et at rem laborum, quidem id eum
-                ipsa.
-              </p>
+              <p>{description}</p>
             </div>
           </div>
         </div>

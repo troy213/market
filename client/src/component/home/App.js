@@ -53,7 +53,7 @@ const App = () => {
     },
   }
 
-  const productList = useFetch('http://localhost:5000/')
+  const productList = useFetch('http://localhost:5000/product')
 
   return (
     <>
@@ -140,36 +140,27 @@ const App = () => {
               slidesToSlide={1}
               swipeable
             >
-              <Product
-                url='aether-70'
-                image='/img/products/backpack/aether-70-grey-1.jpg'
-                title='Aether 70'
-                price='330'
-              />
-              <Product
-                url='atmos-ag-65'
-                image='/img/products/backpack/atmos-ag-65-grey-1.jpg'
-                title='Atmos AG 65'
-                price='300'
-              />
-              <Product
-                url='kajka-75'
-                image='/img/products/backpack/kajka-75-1.jpg'
-                title='Kajka 75'
-                price='450'
-              />
-              <Product
-                url='aircontact-70'
-                image='/img/products/backpack/aircontact-pro-70+15-1.png'
-                title='Deuter Aircontact Pro 70+15'
-                price='300'
-              />
-              <Product
-                url='cloud-up-3'
-                image='/img/products/tent/cloud-up-3.jpg'
-                title='Cloud Up 3'
-                price='150'
-              />
+              {productList.isLoading ? (
+                <h1>Loading</h1>
+              ) : productList.isError ? (
+                <h1>Error</h1>
+              ) : (
+                productList.data.map((value) => {
+                  const { product_id, name, price, image, url, description } =
+                    value
+                  return (
+                    <Product
+                      key={product_id}
+                      id={product_id}
+                      name={name}
+                      price={price}
+                      image={image}
+                      url={url}
+                      description={description}
+                    />
+                  )
+                })
+              )}
             </Carousel>
           </div>
 
@@ -202,15 +193,17 @@ const App = () => {
                 <h1>Error</h1>
               ) : (
                 productList.data.map((value) => {
-                  const { id, url, image, title, price } = value
+                  const { product_id, name, price, image, url, description } =
+                    value
                   return (
                     <Product
-                      key={id}
-                      id={id}
-                      url={url}
-                      image={image}
-                      title={title}
+                      key={product_id}
+                      id={product_id}
+                      name={name}
                       price={price}
+                      image={image}
+                      url={url}
+                      description={description}
                     />
                   )
                 })
@@ -264,10 +257,11 @@ export const Product = (props) => {
       to={{
         pathname: `/products/${props.url}`,
         state: {
-          id: `${props.id}`,
+          productId: `${props.productId}`,
           image: `${props.image}`,
-          title: `${props.title}`,
+          name: `${props.name}`,
           price: `${props.price}`,
+          description: `${props.description}`,
         },
       }}
     >
@@ -276,7 +270,7 @@ export const Product = (props) => {
           <img src={props.image} alt='products' className='product-image' />
         </div>
         <div className='product-desc'>
-          <p>{props.title}</p>
+          <p>{props.name}</p>
           <p>$ {props.price}</p>
         </div>
       </div>
