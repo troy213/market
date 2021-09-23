@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
+import { useFetch } from '../../hooks/UseFetch'
 import './Cart.css'
 
 const Cart = () => {
+  const userId = 1
+  const orderList = useFetch(`http://localhost:5000/order/${userId}`)
+  const [subTotal, setSubTotal] = useState(0)
+
+  React.useEffect(() => {
+    setSubTotal(
+      orderList.data.reduce((accumulator, { price, qty }) => {
+        return accumulator + price * qty
+      }, 0)
+    )
+  }, [orderList.data])
+
   return (
     <div className='cart-container'>
       <div>
@@ -12,34 +25,39 @@ const Cart = () => {
           <div className='cart-content'>
             <h2>My Cart</h2>
             <div className='cart-content-list'>
-              <CartProduct
-                image='/img/products/backpack/aether-70-grey-1.jpg'
-                price='330'
-                name='Aether 70'
-                qty={1}
-              />
-              <CartProduct
-                image='/img/products/backpack/atmos-ag-65-grey-1.jpg'
-                price='300'
-                name='Atmos AG 65'
-                qty={1}
-              />
+              {orderList.isLoading ? (
+                <h1>Loading</h1>
+              ) : orderList.isError ? (
+                <h1>Error</h1>
+              ) : (
+                orderList.data.map((value) => {
+                  const { order_id, name, price, image, qty } = value
+                  return (
+                    <CartProduct
+                      key={order_id}
+                      name={name}
+                      price={price}
+                      image={image}
+                      qty={qty}
+                    />
+                  )
+                })
+              )}
             </div>
           </div>
-
           <div className='cart-subtotal-content'>
             <h2>Total</h2>
             <div>
               <p>Sub Total</p>
-              <p>$0.00</p>
+              <p>${subTotal}</p>
             </div>
             <div>
               <p>Delivery</p>
-              <p>$0.00</p>
+              <p>$0</p>
             </div>
             <div>
               <p>Total</p>
-              <p>$0.00</p>
+              <p>${subTotal}</p>
             </div>
             <button>Checkout</button>
           </div>

@@ -41,7 +41,7 @@ const productGet = (req, res) => {
 
 const productGetId = (req, res) => {
   const { id } = req.params
-  const sql = 'SELECT * FROM product WHERE id=?'
+  const sql = 'SELECT * FROM product WHERE product_id=?'
   db.query(sql, id, (err, result) => {
     if (err) throw err
     return res.status(200).json({ success: true, data: result })
