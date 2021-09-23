@@ -16,12 +16,26 @@ const productGet = (req, res) => {
       return res.status(200).json({ success: true, data: result })
     })
   } else {
-    const { search } = req.query
-    const sql = `SELECT * FROM product WHERE name LIKE '%${search}%'`
-    db.query(sql, (err, result) => {
-      if (err) throw err
-      return res.status(200).json({ success: true, data: result })
-    })
+    const { categories, search } = req.query
+    if (categories && search) {
+      const sql = `SELECT * FROM product WHERE name LIKE '%${search}%' AND categories LIKE '${categories}'`
+      db.query(sql, (err, result) => {
+        if (err) throw err
+        return res.status(200).json({ success: true, data: result })
+      })
+    } else if (categories) {
+      const sql = `SELECT * FROM product WHERE categories LIKE '${categories}'`
+      db.query(sql, (err, result) => {
+        if (err) throw err
+        return res.status(200).json({ success: true, data: result })
+      })
+    } else if (search) {
+      const sql = `SELECT * FROM product WHERE name LIKE '%${search}%'`
+      db.query(sql, (err, result) => {
+        if (err) throw err
+        return res.status(200).json({ success: true, data: result })
+      })
+    }
   }
 }
 
