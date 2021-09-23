@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
+import Axios from 'axios'
 import { useFetch } from '../../hooks/UseFetch'
 import './Cart.css'
 
@@ -15,7 +16,7 @@ const Cart = () => {
         return accumulator + price * qty
       }, 0)
     )
-  }, [orderList.data])
+  }, [orderList.data, orderList])
 
   return (
     <div className='cart-container'>
@@ -35,6 +36,7 @@ const Cart = () => {
                   return (
                     <CartProduct
                       key={order_id}
+                      orderId={order_id}
                       name={name}
                       price={price}
                       image={image}
@@ -78,15 +80,19 @@ const CartProduct = (props) => {
   }
 
   const qtyIncrement = () => {
-    if (qty < 9) {
-      setQty(qty + 1)
-    }
+    Axios.put(`http://localhost:5000/order`, {
+      orderId: props.orderId,
+      qty: props.qty + 1,
+    })
+    window.location.reload()
   }
 
   const qtyDecrement = () => {
-    if (qty > 1) {
-      setQty(qty - 1)
-    }
+    Axios.put(`http://localhost:5000/order`, {
+      orderId: props.orderId,
+      qty: props.qty - 1,
+    })
+    window.location.reload()
   }
 
   return (

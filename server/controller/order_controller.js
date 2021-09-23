@@ -35,7 +35,6 @@ const orderPost = (req, res) => {
       return res.status(200).json({ success: true, data: result })
     })
   }
-  res.status(400).json({ success: false, message: 'failed to post' })
 }
 
 const orderPut = (req, res) => {
@@ -47,7 +46,6 @@ const orderPut = (req, res) => {
       return res.status(200).json({ success: true, data: result })
     })
   }
-  res.status(400).json({ success: false, message: 'failed to update' })
 }
 
 const orderDelete = (req, res) => {
@@ -59,7 +57,6 @@ const orderDelete = (req, res) => {
       return res.status(200).json({ success: true, data: result })
     })
   }
-  res.status(404).json({ success: false, message: '404 not found' })
 }
 
 module.exports = { orderGet, orderGetId, orderPost, orderPut, orderDelete }

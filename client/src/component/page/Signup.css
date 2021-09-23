@@ -24,3 +24,17 @@
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
+
+.sign-up-input.danger {
+  border: 3px solid rgba(255, 0, 0, 0.5);
+}
+
+.sign-up-input.danger:focus {
+  outline: none;
+}
+
+.sign-up-validation {
+  font-size: 0.75em;
+  color: red;
+  margin-bottom: 1em;
+}
