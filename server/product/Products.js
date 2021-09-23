@@ -10,9 +10,9 @@ const products = [
   {
     id: 2,
     categories: 'carrier',
-    url: 'aircontact-70',
+    url: 'aircontact-pro-70+15',
     image: '/img/products/backpack/aircontact-pro-70+15-1.png',
-    title: 'Aircontact 70',
+    title: 'Aircontact Pro 70+15',
     price: 300,
   },
   {
