@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Product } from '../home/App'
 import { useFetch } from '../../hooks/UseFetch'
 import { useLocation } from 'react-router-dom'

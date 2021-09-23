@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useLocation } from 'react-router-dom'
-import Modal from '../home/Modal'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
 import './Item.css'
@@ -30,9 +29,6 @@ const Item = () => {
 
   return (
     <div className='item-container'>
-      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-        <p>Product has been added to your cart</p>
-      </Modal>
       <div>
         <Header value='' />
         <div className='item-content'>

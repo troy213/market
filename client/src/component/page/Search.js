@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
 import { Product } from '../home/App'
