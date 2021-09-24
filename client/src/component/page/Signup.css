@@ -36,5 +36,5 @@
 .sign-up-validation {
   font-size: 0.75em;
   color: red;
-  margin-bottom: 1em;
+  margin: -0.5em 0 1em 0;
 }

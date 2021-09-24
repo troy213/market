@@ -1,4 +1,5 @@
 const mysql = require('mysql')
+const bcrypt = require('bcrypt')
 require('dotenv').config()
 
 const db = mysql.createPool({
@@ -29,14 +30,33 @@ const userGetEmail = (req, res) => {
   })
 }
 
-const userPost = (req, res) => {
-  const { email, password } = req.body
-  const sql = 'INSERT INTO user (email, password) VALUES (?, ?)'
-  if (email && password) {
-    db.query(sql, [email, password], (err, result) => {
-      if (err) throw err
-      return res.status(200).json({ success: true, data: result })
-    })
+const userPost = async (req, res) => {
+  try {
+    const { email, password } = req.body
+    const hashedPassword = await bcrypt.hash(password, 10)
+    const sql = 'INSERT INTO user (email, password) VALUES (?, ?)'
+    if (email && hashedPassword) {
+      db.query(sql, [email, hashedPassword], (err, result) => {
+        if (err) throw err
+        return res.status(200).json({ success: true, data: result })
+      })
+    }
+  } catch {
+    res.status(500).json({ success: false, message: 'failed to sign up' })
+  }
+}
+
+const userAuth = async (req, res) => {
+  try {
+    if (await bcrypt.compare(res.locals.password, res.locals.hashedPassword)) {
+      return res.status(200).json({ success: true, message: 'success' })
+    } else {
+      return res
+        .status(200)
+        .json({ success: false, message: 'invalid email or password' })
+    }
+  } catch {
+    res.status(500).json({ success: false, message: 'failed to sign in' })
   }
 }
 
@@ -68,4 +88,5 @@ module.exports = {
   userPost,
   userPut,
   userDel,
+  userAuth,
 }
