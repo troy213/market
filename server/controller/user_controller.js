@@ -1,13 +1,6 @@
-const mysql = require('mysql')
+const db = require('../db_config')
 const bcrypt = require('bcrypt')
-require('dotenv').config()
-
-const db = mysql.createPool({
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
-})
+const jwt = require('jsonwebtoken')
 
 const userGet = (req, res) => {
   const sql = 'SELECT * FROM user'
@@ -49,7 +42,12 @@ const userPost = async (req, res) => {
 const userAuth = async (req, res) => {
   try {
     if (await bcrypt.compare(res.locals.password, res.locals.hashedPassword)) {
-      return res.status(200).json({ success: true, message: 'success' })
+      const user = { email: res.locals.email }
+
+      const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+      return res
+        .status(200)
+        .json({ success: true, data: accessToken, message: 'success' })
     } else {
       return res
         .status(200)

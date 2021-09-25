@@ -1,0 +1,36 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container .btn {
+  margin: 0.5em;
+}
+
+.btn.sign-up {
+  background: #eee;
+}
+
+.login-input {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 30px;
+  width: 300px;
+  padding-left: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.login-input.danger {
+  border: 3px solid rgba(255, 0, 0, 0.5);
+}
+
+.login-input.danger:focus {
+  outline: none;
+}
+
+.login-validation {
+  font-size: 0.75em;
+  color: red;
+  margin: -0.5em 0 1em 0;
+}

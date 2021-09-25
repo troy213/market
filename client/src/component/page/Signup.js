@@ -72,6 +72,12 @@ const Signup = () => {
     }
   }
 
+  const onEnterPress = (e) => {
+    if (e.code === 'Enter') {
+      signUp()
+    }
+  }
+
   return (
     <div className='sign-up-container'>
       <div>
@@ -89,6 +95,7 @@ const Signup = () => {
           onChange={(e) => setEmail(e.target.value)}
           value={email}
           maxLength='255'
+          onKeyDown={onEnterPress}
           required
         />
         {emailVal ? <p className='sign-up-validation'>{emailValMsg}</p> : <></>}
@@ -102,6 +109,7 @@ const Signup = () => {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
           maxLength='255'
+          onKeyDown={onEnterPress}
           required
         />
         {passVal ? <p className='sign-up-validation'>{passValMsg}</p> : <></>}
@@ -115,6 +123,7 @@ const Signup = () => {
           onChange={(e) => setRetype(e.target.value)}
           value={retype}
           maxLength='255'
+          onKeyDown={onEnterPress}
           required
         />
         {rePassVal ? (

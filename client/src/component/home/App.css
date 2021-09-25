@@ -292,31 +292,6 @@ button,
   margin-bottom: 1em;
 }
 
-/* Login section */
-
-.login-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.login-input {
-  border: 1px solid black;
-  border-radius: 5px;
-  height: 30px;
-  width: 300px;
-  padding-left: 0.5em;
-  margin-top: 0.5em;
-  margin-bottom: 1em;
-}
-
-.login-container .btn {
-  margin: 0.5em;
-}
-
-.btn.sign-up {
-  background: #eee;
-}
-
 @media (min-width: 706px) {
   .promo-content {
     flex-direction: row;
