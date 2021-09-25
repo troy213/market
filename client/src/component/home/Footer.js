@@ -42,7 +42,7 @@ const Footer = () => {
             </button>
           </form>
         </Accordion>
-        <Accordion title='Contact' collapse={accordionCollapse}>
+        <Accordion title='About Us' collapse={accordionCollapse}>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nulla
             sunt illum asperiores autem aliquam accusamus? Vero blanditiis

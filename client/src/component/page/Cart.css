@@ -121,6 +121,17 @@
   font-size: 1.5rem;
 }
 
+.cart-message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-message {
+  color: var(--clr-midtone);
+}
+
 @media (min-width: 850px) {
   .cart-wrapper {
     flex-direction: row;
@@ -143,5 +154,9 @@
     width: 25%;
     height: 200px;
     margin: 0;
+  }
+
+  .cart-message-container {
+    height: 110px;
   }
 }

@@ -9,9 +9,8 @@ const orderGet = (req, res) => {
 }
 
 const orderGetId = (req, res) => {
-  const { id } = req.params
   const sql = `SELECT order_detail.order_id, order_detail.user_id, product.product_id, product.name, product.price, product.image, order_detail.qty FROM order_detail INNER JOIN product ON order_detail.product_id=product.product_id WHERE user_id=?`
-  db.query(sql, id, (err, result) => {
+  db.query(sql, res.locals.id, (err, result) => {
     if (err) throw err
     return res.status(200).json({ success: true, data: result })
   })

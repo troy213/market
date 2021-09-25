@@ -6,8 +6,11 @@ import { useFetch } from '../../hooks/UseFetch'
 import './Cart.css'
 
 const Cart = () => {
-  const userId = 1
-  const orderList = useFetch(`http://localhost:5000/order/${userId}`)
+  const headers = {
+    authorization: `Bearer ${localStorage.getItem('user')}`,
+  }
+
+  const orderList = useFetch(`http://localhost:5000/order/cart`, headers)
   const [subTotal, setSubTotal] = useState(0)
 
   React.useEffect(() => {
@@ -30,7 +33,7 @@ const Cart = () => {
                 <h1>Loading</h1>
               ) : orderList.isError ? (
                 <h1>Error</h1>
-              ) : (
+              ) : orderList.data.length > 0 ? (
                 orderList.data.map((value) => {
                   const { order_id, name, price, image, qty } = value
                   return (
@@ -44,6 +47,10 @@ const Cart = () => {
                     />
                   )
                 })
+              ) : (
+                <div className='cart-message-container'>
+                  <p className='cart-message'>Cart is empty</p>
+                </div>
               )}
             </div>
           </div>

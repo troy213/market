@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Modal from './Modal'
 import Login from './Login'
 import './Header.css'
@@ -7,12 +7,27 @@ const Header = (props) => {
   const [searchValue, setSearchValue] = useState(props.value)
   const [isOpen, setIsOpen] = useState(false)
   const [isActive, setIsActive] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  // TODO: authentication by verify JWT token
 
   const onEnterPress = (e) => {
     if (e.code === 'Enter') {
       window.location.href = `/search?query=${e.target.value}`
     }
   }
+
+  const signOut = () => {
+    setIsLoggedIn(false)
+    localStorage.clear()
+    window.location.reload()
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem('user') != null) {
+      setIsLoggedIn(true)
+    }
+  }, [])
 
   return (
     <>
@@ -22,6 +37,8 @@ const Header = (props) => {
 
       <Sidenav
         active={isActive}
+        isLoggedIn={isLoggedIn}
+        signOut={signOut}
         onClose={() => setIsActive(false)}
         openModal={() => setIsOpen(true)}
         value={searchValue}
@@ -42,12 +59,26 @@ const Header = (props) => {
             />
           </div>
           <div className='nav-utils'>
-            <a href='/cart' className='nav-utils-desktop'>
-              <i className='fa fa-shopping-cart cart'></i>
-            </a>
-            <div onClick={() => setIsOpen(true)} className='nav-utils-desktop'>
-              <button className='btn-login'>Login</button>
-            </div>
+            {isLoggedIn ? (
+              <>
+                <a href='/cart' className='nav-utils-desktop'>
+                  <i className='fa fa-shopping-cart cart'></i>
+                </a>
+                <button
+                  onClick={signOut}
+                  className='nav-utils-desktop btn-login'
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={() => setIsOpen(true)}
+                className='nav-utils-desktop btn-login'
+              >
+                Login
+              </button>
+            )}
             <button
               className='nav-utils-mobile'
               onClick={() => setIsActive(!isActive)}
@@ -86,10 +117,19 @@ const Sidenav = (props) => {
         handleChange={props.handleChange}
         onEnter={props.onEnter}
       />
-      <div onClick={props.openModal}>
-        <button>Login</button>
-      </div>
-      <a href='/cart'>Cart</a>
+      {props.isLoggedIn ? (
+        <>
+          <div onClick={props.signOut}>
+            <button>Logout</button>
+          </div>
+          <a href='/cart'>Cart</a>
+        </>
+      ) : (
+        <div onClick={props.openModal}>
+          <button>Login</button>
+        </div>
+      )}
+
       <hr />
       <h3>Categories</h3>
       <a href='/products?categories=carrier'>Carrier</a>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { useFetch } from '../../hooks/UseFetch'
 import Header from './Header'
@@ -278,12 +277,4 @@ export const Product = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return state
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App

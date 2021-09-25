@@ -24,7 +24,10 @@ const Login = () => {
           password: password,
         })
           .then((res) => {
-            alert(res.data.message)
+            if (res.data.success) {
+              localStorage.setItem('user', res.data.data)
+              window.location.reload()
+            }
           })
           .catch(() => {
             alert('something went wrong')

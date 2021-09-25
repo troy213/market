@@ -38,7 +38,7 @@ const Item = () => {
           <div className='center'>
             <div className='item-content-desc'>
               <h3>{name}</h3>
-              <p>${price}</p>
+              <p>${price * qty}</p>
               <div className='cart-product-qty'>
                 <button className='border-radius-left' onClick={qtyDecrement}>
                   -
