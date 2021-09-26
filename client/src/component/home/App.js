@@ -53,6 +53,7 @@ const App = () => {
   }
 
   const productList = useFetch('http://localhost:5000/product')
+  const productHot = useFetch('http://localhost:5000/product/all/hot')
 
   return (
     <>
@@ -139,18 +140,18 @@ const App = () => {
               slidesToSlide={1}
               swipeable
             >
-              {productList.isLoading ? (
+              {productHot.isLoading ? (
                 <h1>Loading</h1>
-              ) : productList.isError ? (
+              ) : productHot.isError ? (
                 <h1>Error</h1>
               ) : (
-                productList.data.map((value) => {
+                productHot.data.map((value) => {
                   const { product_id, name, price, image, url, description } =
                     value
                   return (
                     <Product
                       key={product_id}
-                      id={product_id}
+                      productId={product_id}
                       name={name}
                       price={price}
                       image={image}
@@ -197,7 +198,7 @@ const App = () => {
                   return (
                     <Product
                       key={product_id}
-                      id={product_id}
+                      productId={product_id}
                       name={name}
                       price={price}
                       image={image}

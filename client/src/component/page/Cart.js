@@ -102,10 +102,17 @@ const CartProduct = (props) => {
     window.location.reload()
   }
 
+  const cancelItem = () => {
+    Axios.delete(`http://localhost:5000/order/${props.orderId}`)
+    window.location.reload()
+  }
+
   return (
     <>
       <div className='cart-product-container'>
-        <span className='cart-product-cancel'>&times;</span>
+        <span className='cart-product-cancel' onClick={cancelItem}>
+          &times;
+        </span>
         <div className='cart-product-img-container'>
           <img src={props.image} alt='products' className='cart-product-img' />
         </div>

@@ -17,12 +17,15 @@ const orderGetId = (req, res) => {
 }
 
 const orderPost = (req, res) => {
-  const { userId, productId, qty, date } = req.body
+  const userId = res.locals.id
+  const { productId, qty, date } = req.body
   const sql =
     'INSERT INTO order_detail (user_id, product_id, qty, date) VALUES (?,?,?,?)'
   if (userId && productId && qty && date) {
     db.query(sql, [userId, productId, qty, date], (err, result) => {
-      if (err) throw err
+      if (err) {
+        return res.status(500).json({ success: false, message: err })
+      }
       return res.status(200).json({ success: true, data: result })
     })
   }
@@ -40,10 +43,10 @@ const orderPut = (req, res) => {
 }
 
 const orderDelete = (req, res) => {
-  const { orderId } = req.body
+  const { id } = req.params
   const sql = 'DELETE FROM order_detail WHERE order_id=?'
-  if (orderId) {
-    db.query(sql, orderId, (err, result) => {
+  if (id) {
+    db.query(sql, id, (err, result) => {
       if (err) throw err
       return res.status(200).json({ success: true, data: result })
     })

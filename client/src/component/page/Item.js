@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import Modal from '../home/Modal'
+import Login from '../home/Login'
+import Axios from 'axios'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
 import './Item.css'
 
 const Item = () => {
   const location = useLocation()
-  const { name, price, image, description } = location.state
-  const [qty, setQty] = React.useState(1)
+  const { productId, name, price, image, description } = location.state
+  const [qty, setQty] = useState(1)
+  const [isOpen, setIsOpen] = useState(false)
+  const [isLogedIn, setIsLogedIn] = useState(true)
 
   const checkMaxLength = (e) => {
     if (e.target.value.length > e.target.maxLength) {
@@ -27,8 +32,48 @@ const Item = () => {
     }
   }
 
+  const headers = {
+    authorization: `Bearer ${localStorage.getItem('user')}`,
+  }
+
+  const addToCart = () => {
+    Axios.post(
+      'http://localhost:5000/order',
+      {
+        productId: productId,
+        qty: qty,
+        date: new Date().toISOString(),
+      },
+      {
+        headers: headers,
+      }
+    )
+      .then((res) => {
+        if (res.data.success) setIsOpen(true)
+      })
+      .catch(() => {
+        setIsLogedIn(false)
+        setIsOpen(true)
+      })
+  }
+
   return (
     <div className='item-container'>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        {isLogedIn ? (
+          <div className='modal-message'>
+            <p className='text-center'>
+              Product added to the cart successfully
+            </p>
+            <br />
+            <a href='/cart' className='btn-dark'>
+              check cart
+            </a>
+          </div>
+        ) : (
+          <Login />
+        )}
+      </Modal>
       <div>
         <Header value='' />
         <div className='item-content'>
@@ -57,7 +102,7 @@ const Item = () => {
                   +
                 </button>
               </div>
-              <button>Add to Cart</button>
+              <button onClick={addToCart}>Add to Cart</button>
               <h3>Description</h3>
               <p>{description}</p>
             </div>

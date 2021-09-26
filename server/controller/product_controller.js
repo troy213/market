@@ -40,4 +40,12 @@ const productGetId = (req, res) => {
   })
 }
 
-module.exports = { productGet, productGetId }
+const productGetHot = (req, res) => {
+  const sql = 'SELECT * FROM product WHERE hot=1'
+  db.query(sql, (err, result) => {
+    if (err) throw err
+    return res.status(200).json({ success: true, data: result })
+  })
+}
+
+module.exports = { productGet, productGetId, productGetHot }

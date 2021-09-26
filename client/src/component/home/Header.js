@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import Modal from './Modal'
 import Login from './Login'
 import './Header.css'
@@ -7,9 +8,6 @@ const Header = (props) => {
   const [searchValue, setSearchValue] = useState(props.value)
   const [isOpen, setIsOpen] = useState(false)
   const [isActive, setIsActive] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-
-  // TODO: authentication by verify JWT token
 
   const onEnterPress = (e) => {
     if (e.code === 'Enter') {
@@ -18,16 +16,10 @@ const Header = (props) => {
   }
 
   const signOut = () => {
-    setIsLoggedIn(false)
+    props.onSetIsAuthorized(false)
     localStorage.clear()
     window.location.reload()
   }
-
-  useEffect(() => {
-    if (localStorage.getItem('user') != null) {
-      setIsLoggedIn(true)
-    }
-  }, [])
 
   return (
     <>
@@ -37,7 +29,7 @@ const Header = (props) => {
 
       <Sidenav
         active={isActive}
-        isLoggedIn={isLoggedIn}
+        isAuthorized={props.isAuthorized}
         signOut={signOut}
         onClose={() => setIsActive(false)}
         openModal={() => setIsOpen(true)}
@@ -59,7 +51,7 @@ const Header = (props) => {
             />
           </div>
           <div className='nav-utils'>
-            {isLoggedIn ? (
+            {props.isAuthorized ? (
               <>
                 <a href='/cart' className='nav-utils-desktop'>
                   <i className='fa fa-shopping-cart cart'></i>
@@ -117,7 +109,7 @@ const Sidenav = (props) => {
         handleChange={props.handleChange}
         onEnter={props.onEnter}
       />
-      {props.isLoggedIn ? (
+      {props.isAuthorized ? (
         <>
           <div onClick={props.signOut}>
             <button>Logout</button>
@@ -139,4 +131,17 @@ const Sidenav = (props) => {
   )
 }
 
-export default Header
+const mapStateToProps = (state) => {
+  return state
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetIsAuthorized: (value) => {
+      const action = { type: 'SET_IS_AUTHORIZED', payload: value }
+      dispatch(action)
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
