@@ -133,6 +133,11 @@
   color: var(--clr-midtone);
 }
 
+button:disabled {
+  background: #aaa;
+  cursor: default;
+}
+
 @media (min-width: 850px) {
   .cart-wrapper {
     flex-direction: row;

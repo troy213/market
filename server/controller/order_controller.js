@@ -33,9 +33,11 @@ const orderPost = (req, res) => {
 
 const orderPut = (req, res) => {
   const { orderId, qty } = req.body
+  let newQty = qty
   const sql = 'UPDATE order_detail SET qty=? WHERE order_id=?'
   if (orderId && qty) {
-    db.query(sql, [qty, orderId], (err, result) => {
+    if (qty > 9) newQty = 9
+    db.query(sql, [newQty, orderId], (err, result) => {
       if (err) throw err
       return res.status(200).json({ success: true, data: result })
     })

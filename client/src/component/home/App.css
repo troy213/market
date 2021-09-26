@@ -152,6 +152,7 @@ button,
 }
 
 .promo-content-desc p {
+  color: var(--clr-light);
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 52px;

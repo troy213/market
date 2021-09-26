@@ -8,21 +8,41 @@ const productGet = (req, res) => {
       return res.status(200).json({ success: true, data: result })
     })
   } else {
-    const { categories, search } = req.query
+    const { categories, search, sort } = req.query
     if (categories && search) {
-      const sql = `SELECT * FROM product WHERE name LIKE '%${search}%' AND categories LIKE '${categories}'`
+      let sql = `SELECT * FROM product WHERE name LIKE '%${search}%' AND categories LIKE '${categories}'`
+      if (sort) {
+        if (sort.toUpperCase() === 'ASC' || sort.toUpperCase() === 'DESC')
+          sql = `SELECT * FROM product WHERE name LIKE '%${search}%' AND categories LIKE '${categories}' ORDER BY price ${sort}`
+      }
       db.query(sql, (err, result) => {
         if (err) throw err
         return res.status(200).json({ success: true, data: result })
       })
     } else if (categories) {
-      const sql = `SELECT * FROM product WHERE categories LIKE '${categories}'`
+      let sql = `SELECT * FROM product WHERE categories LIKE '${categories}'`
+      if (sort) {
+        if (sort.toUpperCase() === 'ASC' || sort.toUpperCase() === 'DESC')
+          sql = `SELECT * FROM product WHERE categories LIKE '${categories}' ORDER BY price ${sort}`
+      }
       db.query(sql, (err, result) => {
         if (err) throw err
         return res.status(200).json({ success: true, data: result })
       })
     } else if (search) {
-      const sql = `SELECT * FROM product WHERE name LIKE '%${search}%'`
+      let sql = `SELECT * FROM product WHERE name LIKE '%${search}%'`
+      if (sort) {
+        if (sort.toUpperCase() === 'ASC' || sort.toUpperCase() === 'DESC')
+          sql = `SELECT * FROM product WHERE name LIKE '%${search}%' ORDER BY price ${sort}`
+      }
+      db.query(sql, (err, result) => {
+        if (err) throw err
+        return res.status(200).json({ success: true, data: result })
+      })
+    } else if (sort) {
+      let sql = `SELECT * FROM product`
+      if (sort.toUpperCase() === 'ASC' || sort.toUpperCase() === 'DESC')
+        sql = `SELECT * FROM product ORDER BY price ${sort}`
       db.query(sql, (err, result) => {
         if (err) throw err
         return res.status(200).json({ success: true, data: result })

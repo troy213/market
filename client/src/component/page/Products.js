@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Product } from '../home/App'
 import { useFetch } from '../../hooks/UseFetch'
 import { useLocation } from 'react-router-dom'
@@ -7,15 +7,61 @@ import Footer from '../home/Footer'
 import './Products.css'
 
 const Products = () => {
+  const [selectSort, setSelectSort] = useState('default')
   const search = useLocation().search
-  const name = new URLSearchParams(search).get('categories')
+  const categories = new URLSearchParams(search).get('categories')
+  const sort = new URLSearchParams(search).get('sort')
   const productList = useFetch(
     `${
-      name
-        ? 'http://localhost:5000/product?categories=' + name
+      categories && sort
+        ? 'http://localhost:5000/product?categories=' +
+          categories +
+          '&sort=' +
+          sort
+        : categories
+        ? 'http://localhost:5000/product?categories=' + categories
+        : sort
+        ? 'http://localhost:5000/product?sort=' + sort
         : 'http://localhost:5000/product'
     }`
   )
+
+  const handleSort = (value) => {
+    setSelectSort(value)
+    if (value === 'default') {
+      window.location.href = `${
+        categories ? '/products?categories=' + categories : '/products'
+      }`
+    }
+    if (value === 'lowToHigh') {
+      window.location.href = `${
+        categories
+          ? '/products?categories=' + categories + '&sort=asc'
+          : '/products?sort=asc'
+      }`
+    }
+    if (value === 'highToLow') {
+      window.location.href = `${
+        categories
+          ? '/products?categories=' + categories + '&sort=desc'
+          : '/products?sort=desc'
+      }`
+    }
+  }
+
+  useEffect(() => {
+    switch (sort) {
+      case 'asc':
+        setSelectSort('lowToHigh')
+        break
+      case 'desc':
+        setSelectSort('highToLow')
+        break
+      default:
+        setSelectSort('default')
+        break
+    }
+  }, [sort])
 
   return (
     <div className='products-container'>
@@ -26,7 +72,12 @@ const Products = () => {
             <h3>All Products</h3>
             <div className='products-content-sort'>
               <p>showing {productList.data.length} results</p>
-              <select name='sort' id='sort'>
+              <select
+                name='sort'
+                id='sort'
+                onChange={(e) => handleSort(e.target.value)}
+                value={selectSort}
+              >
                 <option value='default'>Default Sort</option>
                 <option value='lowToHigh'>Price: low to high</option>
                 <option value='highToLow'>Price: high to low</option>
