@@ -40,6 +40,8 @@
   border: 0;
   border-radius: 5px;
   width: fit-content;
+  font-weight: bolder;
+  transition: background 100ms ease-in;
 }
 
 .item-content-desc > p:last-child {
@@ -54,6 +56,12 @@
   justify-content: center;
   align-items: center;
   margin: 1em;
+}
+
+/* animation */
+
+.item-content-desc > button:hover {
+  background: var(--clr-midtone);
 }
 
 @media (min-width: 706px) {

@@ -114,6 +114,10 @@
   padding-left: 0.25em;
 }
 
+.sidenav-log-btn {
+  cursor: pointer;
+}
+
 .sidenav-close {
   position: absolute;
   top: 0.5em;

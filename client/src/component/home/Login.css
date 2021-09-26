@@ -9,6 +9,8 @@
 
 .btn.sign-up {
   background: #eee;
+  font-weight: bolder;
+  transition: background 100ms ease-in;
 }
 
 .login-input {
@@ -33,4 +35,10 @@
   font-size: 0.75em;
   color: red;
   margin: -0.5em 0 1em 0;
+}
+
+/* animation */
+
+.btn.sign-up:hover {
+  background: #ccc;
 }

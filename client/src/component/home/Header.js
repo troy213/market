@@ -111,13 +111,13 @@ const Sidenav = (props) => {
       />
       {props.isAuthorized ? (
         <>
-          <div onClick={props.signOut}>
+          <div onClick={props.signOut} className='sidenav-log-btn'>
             <button>Logout</button>
           </div>
           <a href='/cart'>Cart</a>
         </>
       ) : (
-        <div onClick={props.openModal}>
+        <div onClick={props.openModal} className='sidenav-log-btn'>
           <button>Login</button>
         </div>
       )}

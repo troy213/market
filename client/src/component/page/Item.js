@@ -85,7 +85,11 @@ const Item = () => {
               <h3>{name}</h3>
               <p>${price * qty}</p>
               <div className='cart-product-qty'>
-                <button className='border-radius-left' onClick={qtyDecrement}>
+                <button
+                  className='border-radius-left'
+                  onClick={qtyDecrement}
+                  disabled={qty < 2 ? true : false}
+                >
                   -
                 </button>
                 <input
@@ -98,7 +102,11 @@ const Item = () => {
                   onChange={(e) => setQty(e.target.value)}
                   disabled
                 />
-                <button className='border-radius-right' onClick={qtyIncrement}>
+                <button
+                  className='border-radius-right'
+                  onClick={qtyIncrement}
+                  disabled={qty > 8 ? true : false}
+                >
                   +
                 </button>
               </div>

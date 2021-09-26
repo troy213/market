@@ -91,11 +91,11 @@ const Login = () => {
       {passVal ? <p className='login-validation'>{passValMsg}</p> : <></>}
       <div className='center'>
         <button className='btn btn-primary' onClick={signIn}>
-          <strong>Login</strong>
+          Login
         </button>
         <div>
           <a href='/signup' className='btn sign-up'>
-            <strong>Sign Up</strong>
+            Sign Up
           </a>
         </div>
       </div>

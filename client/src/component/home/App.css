@@ -60,6 +60,8 @@ p {
   color: whitesmoke;
   background: #333;
   font-size: 1rem;
+  font-weight: bolder;
+  transition: background 100ms ease-in;
 }
 
 .btn-outline {
@@ -70,6 +72,7 @@ p {
   padding: 0.5em 1em 0.5em 1em;
   border: 5px solid var(--clr-light);
   color: var(--clr-light);
+  transition: all 100ms ease-in;
 }
 
 .btn-dark {
@@ -78,6 +81,7 @@ p {
   background: var(--clr-primary);
   color: var(--clr-light);
   padding: 0.5em 2em;
+  transition: all 100ms ease-in;
 }
 
 a {
@@ -291,6 +295,23 @@ button,
   height: 125px;
   object-fit: contain;
   margin-bottom: 1em;
+}
+
+/* animation */
+
+.btn-dark:hover {
+  background: var(--clr-midtone);
+  border: 5px solid var(--clr-midtone);
+}
+
+.btn-outline:hover {
+  background: var(--clr-light);
+  color: var(--clr-primary);
+  font-weight: bolder;
+}
+
+.btn-primary:hover {
+  background: #555;
 }
 
 @media (min-width: 706px) {
