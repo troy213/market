@@ -214,6 +214,7 @@ button,
 
 .slider-container {
   margin: 0 1em;
+  height: 320px;
 }
 
 .slider-container li {
@@ -233,6 +234,11 @@ button,
   max-width: 250px;
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.3);
+  transition: transform 100ms ease-in;
+}
+
+.card:hover {
+  transform: scale(1.025);
 }
 
 .image-container {
