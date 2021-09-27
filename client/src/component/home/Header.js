@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { useLocation } from 'react-router-dom'
 import Modal from './Modal'
 import Login from './Login'
 import './Header.css'
@@ -8,6 +9,7 @@ const Header = (props) => {
   const [searchValue, setSearchValue] = useState(props.value)
   const [isOpen, setIsOpen] = useState(false)
   const [isActive, setIsActive] = useState(false)
+  const path = useLocation().pathname
 
   const onEnterPress = (e) => {
     if (e.code === 'Enter') {
@@ -36,6 +38,7 @@ const Header = (props) => {
         value={searchValue}
         handleChange={(e) => setSearchValue(e.target.value)}
         onEnter={onEnterPress}
+        sideCartQty={props.orderList.length}
       />
 
       <nav className='nav'>
@@ -54,7 +57,14 @@ const Header = (props) => {
             {props.isAuthorized ? (
               <>
                 <a href='/cart' className='nav-utils-desktop'>
-                  <i className='fa fa-shopping-cart cart'></i>
+                  {props.orderList.length > 0 && path !== '/cart' ? (
+                    <i
+                      className='fa fa-shopping-cart cart'
+                      data-qty={props.orderList.length}
+                    ></i>
+                  ) : (
+                    <i className='fa fa-shopping-cart cart'></i>
+                  )}
                 </a>
                 <button
                   onClick={signOut}
@@ -75,7 +85,11 @@ const Header = (props) => {
               className='nav-utils-mobile'
               onClick={() => setIsActive(!isActive)}
             >
-              <i className='fa fa-bars'></i>
+              {props.orderList.length > 0 && path !== '/cart' ? (
+                <i className='fa fa-bars notification'></i>
+              ) : (
+                <i className='fa fa-bars'></i>
+              )}
             </button>
           </div>
         </div>
@@ -99,6 +113,8 @@ const SearchBar = (props) => {
 }
 
 const Sidenav = (props) => {
+  const path = useLocation().pathname
+
   return (
     <div className={`sidenav-container${props.active ? ' active' : ''}`}>
       <span className='sidenav-close' onClick={props.onClose}>
@@ -114,7 +130,13 @@ const Sidenav = (props) => {
           <div onClick={props.signOut} className='sidenav-log-btn'>
             <button>Logout</button>
           </div>
-          <a href='/cart'>Cart</a>
+          <a href='/cart'>
+            {props.sideCartQty > 0 && path !== '/cart' ? (
+              <p data-side-qty={props.sideCartQty}>Cart</p>
+            ) : (
+              <p>Cart</p>
+            )}
+          </a>
         </>
       ) : (
         <div onClick={props.openModal} className='sidenav-log-btn'>

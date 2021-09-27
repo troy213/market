@@ -5,6 +5,8 @@ const initialState = {
   isAuthorized: false,
   isLoading: true,
   error: '',
+  orderList: [],
+  hasData: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -17,6 +19,10 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { error: action.payload })
     case 'SET_LOADING':
       return Object.assign({}, state, { isLoading: action.payload })
+    case 'SET_ORDERLIST':
+      return Object.assign({}, state, { orderList: action.payload })
+    case 'SET_HAS_DATA':
+      return Object.assign({}, state, { hasData: action.payload })
     default:
       return state
   }

@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 
 export const useFetch = (url, headers) => {
+  const [hasData, setHasData] = useState(false)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
   useEffect(() => {
-    if (data.length === 0) {
+    if (!hasData) {
       if (headers != null) {
         fetch(url, {
           headers: headers,
@@ -20,6 +21,7 @@ export const useFetch = (url, headers) => {
             }
           })
           .then((value) => {
+            setHasData(true)
             setData(value.data)
             setIsLoading(false)
           })
@@ -37,6 +39,7 @@ export const useFetch = (url, headers) => {
             }
           })
           .then((value) => {
+            setHasData(true)
             setData(value.data)
             setIsLoading(false)
           })
@@ -45,7 +48,7 @@ export const useFetch = (url, headers) => {
           })
       }
     }
-  }, [headers, url, data.length])
+  }, [headers, url, data.length, hasData])
 
   return { data, isLoading, isError }
 }

@@ -19,26 +19,46 @@ import Error from './component/page/Error'
 const AppRouter = (props) => {
   useEffect(() => {
     if (localStorage.getItem('user') != null) {
-      const headers = {
-        authorization: `Bearer ${localStorage.getItem('user')}`,
+      if (!props.isAuthorized) {
+        const headers = {
+          authorization: `Bearer ${localStorage.getItem('user')}`,
+        }
+
+        Axios.get('http://localhost:5000/auth', { headers: headers })
+          .then((res) => {
+            if (res.status >= 200 && res.status <= 299) {
+              if (res.data.success) {
+                props.onSetUser(res.data.data.email)
+                props.onSetIsAuthorized(true)
+                props.onSetIsLoading(false)
+              }
+            } else {
+              props.onSetIsAuthorized(false)
+              props.onSetIsLoading(true)
+            }
+          })
+          .catch((err) => {
+            if (err) localStorage.clear()
+          })
       }
 
-      Axios.get('http://localhost:5000/auth', { headers: headers })
-        .then((res) => {
-          if (res.status >= 200 && res.status <= 299) {
-            if (res.data.success) {
-              props.onSetUser(res.data.data.email)
-              props.onSetIsAuthorized(true)
+      if (!props.hasData) {
+        const headers = {
+          authorization: `Bearer ${localStorage.getItem('user')}`,
+        }
+
+        Axios.get('http://localhost:5000/order/cart', { headers: headers })
+          .then((res) => {
+            if (res.status >= 200 && res.status <= 299) {
+              props.onSetOrderList(res.data.data)
               props.onSetIsLoading(false)
+              props.onSetHasData(true)
             }
-          } else {
-            props.onSetIsAuthorized(false)
-            props.onSetIsLoading(true)
-          }
-        })
-        .catch((err) => {
-          if (err) localStorage.clear()
-        })
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
     }
   }, [props])
 
@@ -86,6 +106,14 @@ const mapDispatchToProps = (dispatch) => {
     },
     onSetIsLoading: (value) => {
       const action = { type: 'SET_LOADING', payload: value }
+      dispatch(action)
+    },
+    onSetOrderList: (value) => {
+      const action = { type: 'SET_ORDERLIST', payload: value }
+      dispatch(action)
+    },
+    onSetHasData: (value) => {
+      const action = { type: 'SET_HAS_DATA', payload: value }
       dispatch(action)
     },
   }

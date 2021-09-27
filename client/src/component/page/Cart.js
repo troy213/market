@@ -14,12 +14,14 @@ const Cart = () => {
   const [subTotal, setSubTotal] = useState(0)
 
   React.useEffect(() => {
-    setSubTotal(
-      orderList.data.reduce((accumulator, { price, qty }) => {
-        return accumulator + price * qty
-      }, 0)
-    )
-  }, [orderList.data, orderList])
+    if (orderList.data.length > 0) {
+      setSubTotal(
+        orderList.data.reduce((accumulator, { price, qty }) => {
+          return accumulator + price * qty
+        }, 0)
+      )
+    }
+  }, [orderList])
 
   return (
     <div className='cart-container'>
