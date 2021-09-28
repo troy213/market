@@ -14,9 +14,11 @@ const signupAuth = require('../middleware/signup_auth')
 const loginAuth = require('../middleware/login_auth')
 
 router.get('/', userGet)
-router.get('/:email', userGetEmail)
 router.post('/', signupAuth, userPost)
 router.post('/login', loginAuth, userAuth)
+
+// notused
+router.get('/:email', userGetEmail)
 router.put('/', userPut)
 router.delete('/:email', userDel)
 

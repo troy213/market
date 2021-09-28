@@ -28,35 +28,19 @@ const AppRouter = (props) => {
           .then((res) => {
             if (res.status >= 200 && res.status <= 299) {
               if (res.data.success) {
-                props.onSetUser(res.data.data.email)
+                props.onSetData(res.data.data)
                 props.onSetIsAuthorized(true)
+                props.onSetIsLoading(false)
+              } else {
+                props.onSetIsError(true)
                 props.onSetIsLoading(false)
               }
             } else {
               props.onSetIsAuthorized(false)
-              props.onSetIsLoading(true)
             }
           })
           .catch((err) => {
             if (err) localStorage.clear()
-          })
-      }
-
-      if (!props.hasData) {
-        const headers = {
-          authorization: `Bearer ${localStorage.getItem('user')}`,
-        }
-
-        Axios.get('http://localhost:5000/order/cart', { headers: headers })
-          .then((res) => {
-            if (res.status >= 200 && res.status <= 299) {
-              props.onSetOrderList(res.data.data)
-              props.onSetIsLoading(false)
-              props.onSetHasData(true)
-            }
-          })
-          .catch((err) => {
-            console.log(err)
           })
       }
     }
@@ -96,24 +80,16 @@ const mapDispatchToProps = (dispatch) => {
       const action = { type: 'SET_IS_AUTHORIZED', payload: value }
       dispatch(action)
     },
-    onSetUser: (value) => {
-      const action = { type: 'SET_USER', payload: value }
-      dispatch(action)
-    },
-    onSetError: (value) => {
-      const action = { type: 'SET_ERROR', payload: value }
-      dispatch(action)
-    },
     onSetIsLoading: (value) => {
       const action = { type: 'SET_LOADING', payload: value }
       dispatch(action)
     },
-    onSetOrderList: (value) => {
-      const action = { type: 'SET_ORDERLIST', payload: value }
+    onSetIsError: (value) => {
+      const action = { type: 'SET_ERROR', payload: value }
       dispatch(action)
     },
-    onSetHasData: (value) => {
-      const action = { type: 'SET_HAS_DATA', payload: value }
+    onSetData: (value) => {
+      const action = { type: 'SET_DATA', payload: value }
       dispatch(action)
     },
   }

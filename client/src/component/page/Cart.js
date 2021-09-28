@@ -1,28 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
 import Axios from 'axios'
-import { useFetch } from '../../hooks/UseFetch'
 import './Cart.css'
 
-const Cart = () => {
-  const headers = {
-    authorization: `Bearer ${localStorage.getItem('user')}`,
-  }
-
-  const orderList = useFetch(`http://localhost:5000/order/cart`, headers)
-  const [subTotal, setSubTotal] = useState(0)
-
-  React.useEffect(() => {
-    if (orderList.data.length > 0) {
-      setSubTotal(
-        orderList.data.reduce((accumulator, { price, qty }) => {
-          return accumulator + price * qty
-        }, 0)
-      )
-    }
-  }, [orderList])
-
+const Cart = (props) => {
   return (
     <div className='cart-container'>
       <div>
@@ -31,12 +14,12 @@ const Cart = () => {
           <div className='cart-content'>
             <h2>My Cart</h2>
             <div className='cart-content-list'>
-              {orderList.isLoading ? (
+              {props.isLoading ? (
                 <h1>Loading</h1>
-              ) : orderList.isError ? (
+              ) : props.isError ? (
                 <h1>Error</h1>
-              ) : orderList.data.length > 0 ? (
-                orderList.data.map((value) => {
+              ) : props.data.order_list.length > 0 ? (
+                props.data.order_list.map((value) => {
                   const { order_id, name, price, image, qty } = value
                   return (
                     <CartProduct
@@ -60,7 +43,7 @@ const Cart = () => {
             <h2>Total</h2>
             <div>
               <p>Sub Total</p>
-              <p>${subTotal}</p>
+              <p>${props.data.total}</p>
             </div>
             <div>
               <p>Delivery</p>
@@ -68,7 +51,7 @@ const Cart = () => {
             </div>
             <div>
               <p>Total</p>
-              <p>${subTotal}</p>
+              <p>${props.data.total}</p>
             </div>
             <button>Checkout</button>
           </div>
@@ -157,4 +140,12 @@ const CartProduct = (props) => {
   )
 }
 
-export default Cart
+const mapStateToProps = (state) => {
+  return state
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

@@ -8,16 +8,8 @@ const orderGet = (req, res) => {
   })
 }
 
-const orderGetId = (req, res) => {
-  const sql = `SELECT order_detail.order_id, order_detail.user_id, product.product_id, product.name, product.price, product.image, order_detail.qty FROM order_detail INNER JOIN product ON order_detail.product_id=product.product_id WHERE user_id=?`
-  db.query(sql, res.locals.id, (err, result) => {
-    if (err) throw err
-    return res.status(200).json({ success: true, data: result })
-  })
-}
-
 const orderPost = (req, res) => {
-  const userId = res.locals.id
+  const userId = res.locals.user.id
   const { productId, qty, date } = req.body
   const sql =
     'INSERT INTO order_detail (user_id, product_id, qty, date) VALUES (?,?,?,?)'
@@ -55,4 +47,4 @@ const orderDelete = (req, res) => {
   }
 }
 
-module.exports = { orderGet, orderGetId, orderPost, orderPut, orderDelete }
+module.exports = { orderGet, orderPost, orderPut, orderDelete }

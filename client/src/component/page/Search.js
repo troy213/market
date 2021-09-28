@@ -3,7 +3,7 @@ import Header from '../home/Header'
 import Footer from '../home/Footer'
 import { Product } from '../home/App'
 import { useLocation } from 'react-router-dom'
-import { useFetch } from '../../hooks/UseFetch'
+import useFetch from '../../hooks/UseFetch'
 import './Search.css'
 import './Products.css'
 

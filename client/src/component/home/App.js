@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useFetch } from '../../hooks/UseFetch'
+import useFetch from '../../hooks/UseFetch'
 import Header from './Header'
 import Footer from './Footer'
 import MainPromoImg from '../../assets/kajka-75.png'

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Product } from '../home/App'
-import { useFetch } from '../../hooks/UseFetch'
+import useFetch from '../../hooks/UseFetch'
 import { useLocation } from 'react-router-dom'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
@@ -11,6 +11,7 @@ const Products = () => {
   const search = useLocation().search
   const categories = new URLSearchParams(search).get('categories')
   const sort = new URLSearchParams(search).get('sort')
+
   const productList = useFetch(
     `${
       categories && sort

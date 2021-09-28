@@ -38,7 +38,7 @@ const Header = (props) => {
         value={searchValue}
         handleChange={(e) => setSearchValue(e.target.value)}
         onEnter={onEnterPress}
-        sideCartQty={props.orderList.length}
+        sideCartQty={props.data.order_list.length}
       />
 
       <nav className='nav'>
@@ -57,10 +57,10 @@ const Header = (props) => {
             {props.isAuthorized ? (
               <>
                 <a href='/cart' className='nav-utils-desktop'>
-                  {props.orderList.length > 0 && path !== '/cart' ? (
+                  {props.data.order_list.length > 0 && path !== '/cart' ? (
                     <i
                       className='fa fa-shopping-cart cart'
-                      data-qty={props.orderList.length}
+                      data-qty={props.data.order_list.length}
                     ></i>
                   ) : (
                     <i className='fa fa-shopping-cart cart'></i>
@@ -85,7 +85,7 @@ const Header = (props) => {
               className='nav-utils-mobile'
               onClick={() => setIsActive(!isActive)}
             >
-              {props.orderList.length > 0 && path !== '/cart' ? (
+              {props.data.order_list.length > 0 && path !== '/cart' ? (
                 <i className='fa fa-bars notification'></i>
               ) : (
                 <i className='fa fa-bars'></i>

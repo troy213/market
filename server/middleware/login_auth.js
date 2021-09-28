@@ -8,6 +8,7 @@ const loginAuth = (req, res, next) => {
       return res.status(500).json({ success: false, message: err })
     }
     if (result.length > 0) {
+      res.locals.id = result[0].user_id
       res.locals.email = email
       res.locals.password = password
       res.locals.hashedPassword = result[0].password

@@ -42,7 +42,7 @@ const userPost = async (req, res) => {
 const userAuth = async (req, res) => {
   try {
     if (await bcrypt.compare(res.locals.password, res.locals.hashedPassword)) {
-      const user = { email: res.locals.email }
+      const user = { id: res.locals.id, email: res.locals.email }
 
       const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
       return res
