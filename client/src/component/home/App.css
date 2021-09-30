@@ -64,6 +64,10 @@ p {
   transition: background 100ms ease-in;
 }
 
+.btn-primary:hover {
+  background: #555;
+}
+
 .btn-outline {
   display: block;
   width: fit-content;
@@ -75,6 +79,12 @@ p {
   transition: all 100ms ease-in;
 }
 
+.btn-outline:hover {
+  background: var(--clr-light);
+  color: var(--clr-primary);
+  font-weight: bolder;
+}
+
 .btn-dark {
   border: 5px solid var(--clr-primary);
   border-radius: 5px;
@@ -82,6 +92,11 @@ p {
   color: var(--clr-light);
   padding: 0.5em 2em;
   transition: all 100ms ease-in;
+}
+
+.btn-dark:hover {
+  background: var(--clr-midtone);
+  border: 5px solid var(--clr-midtone);
 }
 
 a {
@@ -303,21 +318,42 @@ button,
   margin-bottom: 1em;
 }
 
-/* animation */
+/* breadcrumb */
 
-.btn-dark:hover {
-  background: var(--clr-midtone);
-  border: 5px solid var(--clr-midtone);
+.breadcrumb {
+  margin: 1em auto;
+  width: 80%;
 }
 
-.btn-outline:hover {
-  background: var(--clr-light);
+.breadcrumb a {
+  color: var(--clr-secondary);
+  position: relative;
+}
+
+.breadcrumb a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: -4px;
+  right: 0;
+  left: 0;
+  border-bottom: 2px solid var(--clr-secondary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all 100ms ease-in;
+}
+
+.breadcrumb a:hover::before {
+  transform: scaleX(1);
+}
+
+.breadcrumb b {
+  margin: 0 0.5em;
+}
+
+.breadcrumb p {
+  display: inline;
   color: var(--clr-primary);
-  font-weight: bolder;
-}
-
-.btn-primary:hover {
-  background: #555;
 }
 
 @media (min-width: 706px) {

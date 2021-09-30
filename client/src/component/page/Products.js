@@ -68,6 +68,11 @@ const Products = () => {
     <div className='products-container'>
       <div>
         <Header value='' />
+        <div className='breadcrumb'>
+          <a href='/'>Home</a>
+          <b>/</b>
+          <p>Products</p>
+        </div>
         <div className='products-content'>
           <div className='products-content-title'>
             <h3>All Products</h3>
@@ -115,7 +120,6 @@ const Products = () => {
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   )

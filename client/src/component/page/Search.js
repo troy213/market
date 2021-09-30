@@ -52,6 +52,11 @@ const Search = () => {
     <div className='search-container'>
       <div>
         <Header value={name} />
+        <div className='breadcrumb'>
+          <a href='/'>Home</a>
+          <b>/</b>
+          <p>Products</p>
+        </div>
         <div className='products-content'>
           <div className='products-content-title'>
             <h3>Search result for: '{name}'</h3>

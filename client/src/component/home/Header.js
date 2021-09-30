@@ -94,6 +94,24 @@ const Header = (props) => {
           </div>
         </div>
       </nav>
+      <div className='navlink-container'>
+        <div className='navlink'>
+          <div className='navlink-content'>
+            <a href='/products' className='navlink-link'>
+              All Products
+            </a>
+            <a href='/products?categories=carrier' className='navlink-link'>
+              Carrier
+            </a>
+            <a href='/products?categories=tent' className='navlink-link'>
+              Tent
+            </a>
+            <a href='/products?categories=apparel' className='navlink-link'>
+              Apparel
+            </a>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
@@ -146,6 +164,7 @@ const Sidenav = (props) => {
 
       <hr />
       <h3>Categories</h3>
+      <a href='/products'>All Products</a>
       <a href='/products?categories=carrier'>Carrier</a>
       <a href='/products?categories=tent'>Tent</a>
       <a href='/products?categories=apparel'>Apparel</a>

@@ -76,44 +76,51 @@ const Item = () => {
       </Modal>
       <div>
         <Header value='' />
-        <div className='item-content'>
-          <div className='item-img-container'>
-            <img src={image} alt='item-img' className='item-img' />
-          </div>
-          <div className='center'>
-            <div className='item-content-desc'>
-              <h3>{name}</h3>
-              <p>${price * qty}</p>
-              <div className='cart-product-qty'>
-                <button
-                  className='border-radius-left'
-                  onClick={qtyDecrement}
-                  disabled={qty < 2 ? true : false}
-                >
-                  -
-                </button>
-                <input
-                  type='number'
-                  min='1'
-                  max='9'
-                  maxLength='1'
-                  onInput={checkMaxLength}
-                  value={qty}
-                  onChange={(e) => setQty(e.target.value)}
-                  disabled
-                />
-                <button
-                  className='border-radius-right'
-                  onClick={qtyIncrement}
-                  disabled={qty > 8 ? true : false}
-                >
-                  +
-                </button>
-              </div>
-              <button onClick={addToCart}>Add to Cart</button>
-              <h3>Description</h3>
-              <p>{description}</p>
+        <div className='breadcrumb'>
+          <a href='/'>Home</a>
+          <b>/</b>
+          <a href='/products'>Products</a>
+          <b>/</b>
+          <p>{name}</p>
+        </div>
+      </div>
+      <div className='item-content'>
+        <div className='item-img-container'>
+          <img src={image} alt='item-img' className='item-img' />
+        </div>
+        <div className='center'>
+          <div className='item-content-desc'>
+            <h3>{name}</h3>
+            <p>${price * qty}</p>
+            <div className='cart-product-qty'>
+              <button
+                className='border-radius-left'
+                onClick={qtyDecrement}
+                disabled={qty < 2 ? true : false}
+              >
+                -
+              </button>
+              <input
+                type='number'
+                min='1'
+                max='9'
+                maxLength='1'
+                onInput={checkMaxLength}
+                value={qty}
+                onChange={(e) => setQty(e.target.value)}
+                disabled
+              />
+              <button
+                className='border-radius-right'
+                onClick={qtyIncrement}
+                disabled={qty > 8 ? true : false}
+              >
+                +
+              </button>
             </div>
+            <button onClick={addToCart}>Add to Cart</button>
+            <h3>Description</h3>
+            <p>{description}</p>
           </div>
         </div>
       </div>

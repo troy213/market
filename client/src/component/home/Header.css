@@ -120,6 +120,34 @@
   padding: 0.5em 1em;
 }
 
+.navlink-container {
+  background: var(--clr-primary);
+  display: none;
+}
+
+.navlink {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.navlink-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navlink-link {
+  flex-grow: 1;
+  color: var(--clr-light);
+  text-align: center;
+  padding: 1em 0;
+  transition: background 100ms ease-in;
+}
+
+.navlink-link:hover {
+  background: var(--clr-midtone);
+}
+
 /* Sidenav */
 
 .sidenav-container {
@@ -194,6 +222,10 @@
     display: block;
     flex-grow: 1;
     padding: 0 1.5em;
+  }
+
+  .navlink-container {
+    display: block;
   }
 
   .sidenav-container {
