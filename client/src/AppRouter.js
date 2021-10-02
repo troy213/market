@@ -14,6 +14,7 @@ import Signup from './component/page/Signup'
 import Cart from './component/page/Cart'
 import Products from './component/page/Products'
 import Item from './component/page/Item'
+import Profile from './component/page/Profile'
 import Error from './component/page/Error'
 
 const AppRouter = (props) => {
@@ -43,6 +44,8 @@ const AppRouter = (props) => {
             if (err) localStorage.clear()
           })
       }
+    } else {
+      props.onSetIsGuest(true)
     }
   }, [props])
 
@@ -63,7 +66,14 @@ const AppRouter = (props) => {
             <Redirect to='/' />
           ))}
         <Route path='/products' exact component={Products} />
-        <Route path='/products/:name' component={Item} />
+        <Route path='/products/:name' exact component={Item} />
+        {!props.isLoading &&
+          (props.isAuthorized ? (
+            <Route path='/profile' exact component={Profile} />
+          ) : (
+            <Redirect to='/' />
+          ))}
+
         <Route path='*' component={Error} />
       </Switch>
     </Router>
@@ -90,6 +100,10 @@ const mapDispatchToProps = (dispatch) => {
     },
     onSetData: (value) => {
       const action = { type: 'SET_DATA', payload: value }
+      dispatch(action)
+    },
+    onSetIsGuest: (value) => {
+      const action = { type: 'SET_GUEST', payload: value }
       dispatch(action)
     },
   }

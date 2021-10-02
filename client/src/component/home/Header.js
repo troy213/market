@@ -39,6 +39,7 @@ const Header = (props) => {
         handleChange={(e) => setSearchValue(e.target.value)}
         onEnter={onEnterPress}
         sideCartQty={props.data.order_list.length}
+        user={props.data.user.email}
       />
 
       <nav className='nav'>
@@ -65,6 +66,9 @@ const Header = (props) => {
                   ) : (
                     <i className='fa fa-shopping-cart cart'></i>
                   )}
+                </a>
+                <a href='/profile' className='nav-utils-desktop profile'>
+                  {props.data.user.email.split('@')[0]}
                 </a>
                 <button
                   onClick={signOut}
@@ -145,9 +149,9 @@ const Sidenav = (props) => {
       />
       {props.isAuthorized ? (
         <>
-          <div onClick={props.signOut} className='sidenav-log-btn'>
-            <button>Logout</button>
-          </div>
+          <a href='/profile' className='profile-sidenav'>
+            {props.user.split('@')[0]}
+          </a>
           <a href='/cart'>
             {props.sideCartQty > 0 && path !== '/cart' ? (
               <p data-side-qty={props.sideCartQty}>Cart</p>
@@ -155,6 +159,9 @@ const Sidenav = (props) => {
               <p>Cart</p>
             )}
           </a>
+          <div onClick={props.signOut} className='sidenav-log-btn'>
+            <button>Logout</button>
+          </div>
         </>
       ) : (
         <div onClick={props.openModal} className='sidenav-log-btn'>

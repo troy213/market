@@ -25,7 +25,7 @@ const Signup = () => {
     if (email && password && retype) {
       if (validateEmail(email) && password === retype) {
         Axios.post('http://localhost:5000/user', {
-          email: email,
+          email: email.toLocaleLowerCase(),
           password: password,
         })
           .then(() => {

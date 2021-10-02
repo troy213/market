@@ -323,6 +323,7 @@ button,
 .breadcrumb {
   margin: 1em auto;
   width: 80%;
+  max-width: 980px;
 }
 
 .breadcrumb a {
@@ -349,6 +350,7 @@ button,
 
 .breadcrumb b {
   margin: 0 0.5em;
+  color: var(--clr-primary);
 }
 
 .breadcrumb p {

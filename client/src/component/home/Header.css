@@ -1,7 +1,7 @@
 .nav {
   display: flex;
   align-items: center;
-  height: 90px;
+  padding: 1em 0;
   background: var(--clr-primary);
   min-width: 360px;
 }
@@ -58,6 +58,19 @@
   color: var(--clr-light);
   font-size: 30px !important;
   margin-right: 1rem;
+}
+
+.profile {
+  color: var(--clr-light);
+  max-width: 75px;
+  overflow: hidden;
+  margin-right: 1rem;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+}
+
+.profile-sidenav {
+  text-transform: capitalize;
 }
 
 .notification {
@@ -205,6 +218,10 @@
 }
 
 @media (min-width: 706px) {
+  .nav {
+    padding: 1em 0 0.5em 0;
+  }
+
   .nav-utils-desktop {
     display: block;
   }

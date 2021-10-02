@@ -20,13 +20,15 @@ const Login = () => {
     if (email && password) {
       if (validateEmail(email)) {
         Axios.post('http://localhost:5000/user/login', {
-          email: email,
+          email: email.toLowerCase(),
           password: password,
         })
           .then((res) => {
             if (res.data.success) {
               localStorage.setItem('user', res.data.data)
               window.location.reload()
+            } else {
+              alert(res.data.message)
             }
           })
           .catch(() => {

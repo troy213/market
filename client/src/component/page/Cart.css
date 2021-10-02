@@ -114,6 +114,10 @@
   font-weight: bolder;
 }
 
+.cart-product-qty input:focus {
+  outline: none;
+}
+
 .cart-product-cancel {
   position: absolute;
   top: 0.5em;
@@ -136,6 +140,20 @@
 button:disabled {
   background: #aaa;
   cursor: default;
+}
+
+.checkout-message {
+  margin: 1em 0;
+  max-width: 350px;
+  text-align: center;
+}
+
+.checkout-message a {
+  color: var(--clr-midtone);
+}
+
+.checkout-message a:hover {
+  color: var(--clr-light);
 }
 
 @media (min-width: 850px) {

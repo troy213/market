@@ -1,8 +1,9 @@
 import React from 'react'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
+import { connect } from 'react-redux'
 
-const Error = () => {
+const Error = (props) => {
   const errorContainer = {
     margin: '0 auto',
     minHeight: '100vh',
@@ -23,10 +24,22 @@ const Error = () => {
       <div>
         <Header value='' />
       </div>
-      <h1 style={textStyle}>404 Not Found</h1>
+      {props.isLoading && !props.isGuest ? (
+        <h1 style={textStyle}>Loading...</h1>
+      ) : (
+        <h1 style={textStyle}>404 Not Found</h1>
+      )}
       <Footer />
     </div>
   )
 }
 
-export default Error
+const mapStateToProps = (state) => {
+  return state
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Error)

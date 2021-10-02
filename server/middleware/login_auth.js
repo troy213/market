@@ -10,6 +10,9 @@ const loginAuth = (req, res, next) => {
     if (result.length > 0) {
       res.locals.id = result[0].user_id
       res.locals.email = email
+      res.locals.name = result[0].name
+      res.locals.address = result[0].address
+      res.locals.phone = result[0].phone
       res.locals.password = password
       res.locals.hashedPassword = result[0].password
       next()

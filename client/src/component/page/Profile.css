@@ -1,0 +1,96 @@
+.profile-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 360px;
+}
+
+.profile-wrapper {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0 2em 0;
+}
+
+.profile-content > h3 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.profile-content > div {
+  display: flex;
+  align-items: center;
+}
+
+.profile-content > div > p:first-child {
+  width: 150px;
+}
+
+.profile-content i {
+  margin-left: 1em;
+  color: var(--clr-midtone);
+  cursor: pointer;
+}
+
+.profile-back {
+  margin: 1em auto 0 auto;
+  width: 80%;
+  max-width: 980px;
+  color: var(--clr-midtone);
+  cursor: pointer;
+}
+
+.profile-edit {
+  margin: 1em 0 0.5em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-edit h3 {
+  text-align: center;
+}
+
+.profile-edit input {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 30px;
+  width: 300px;
+  padding-left: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.profile-edit input.danger {
+  border: 3px solid rgba(255, 0, 0, 0.5);
+}
+
+.profile-edit input.danger:focus {
+  outline: none;
+}
+
+.profile-edit-validation {
+  font-size: 0.75em;
+  color: red;
+  margin: -0.5em 0 1em 0;
+}
+
+.profile-edit button {
+  padding: 1em;
+  width: fit-content;
+  border: 0;
+  border-radius: 5px;
+  color: var(--clr-light);
+  background: var(--clr-primary);
+}
+
+.change-password {
+  cursor: pointer;
+  color: var(--clr-midtone);
+}

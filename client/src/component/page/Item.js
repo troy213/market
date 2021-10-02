@@ -101,14 +101,15 @@ const Item = () => {
                 -
               </button>
               <input
-                type='number'
+                type='text'
                 min='1'
                 max='9'
                 maxLength='1'
                 onInput={checkMaxLength}
                 value={qty}
-                onChange={(e) => setQty(e.target.value)}
-                disabled
+                onChange={(e) =>
+                  setQty(Number(e.target.value.replace(/\D/, 1)))
+                }
               />
               <button
                 className='border-radius-right'

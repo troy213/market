@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import Header from '../home/Header'
 import Footer from '../home/Footer'
+import Modal from '../home/Modal'
 import Axios from 'axios'
 import './Cart.css'
 
 const Cart = (props) => {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div className='cart-container'>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <div className='checkout-message'>
+          <p>
+            Thank you for trying this e-commerce demo project. If there is any
+            bug or error, you can send me a message through my website.
+          </p>
+          <br />
+          <a
+            href='https://triteraerlangga.com/#contact'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Tritera Erlangga
+          </a>
+        </div>
+      </Modal>
       <div>
         <Header value='' />
         <div className='cart-wrapper'>
@@ -53,7 +72,7 @@ const Cart = (props) => {
               <p>Total</p>
               <p>${props.data.total}</p>
             </div>
-            <button>Checkout</button>
+            <button onClick={() => setIsOpen(true)}>Checkout</button>
           </div>
         </div>
       </div>
@@ -72,19 +91,30 @@ const CartProduct = (props) => {
   }
 
   const qtyIncrement = () => {
+    setQty(qty + 1)
     Axios.put(`http://localhost:5000/order`, {
       orderId: props.orderId,
-      qty: props.qty + 1,
+      qty: qty + 1,
     })
-    window.location.reload()
   }
 
   const qtyDecrement = () => {
+    setQty(qty - 1)
     Axios.put(`http://localhost:5000/order`, {
       orderId: props.orderId,
-      qty: props.qty - 1,
+      qty: qty - 1,
     })
-    window.location.reload()
+  }
+
+  const handleChange = (value) => {
+    setQty(value)
+    if (qty !== null) {
+      Axios.put(`http://localhost:5000/order`, {
+        orderId: props.orderId,
+        qty: value,
+      })
+      // window.location.reload()
+    }
   }
 
   const cancelItem = () => {
@@ -116,14 +146,15 @@ const CartProduct = (props) => {
               -
             </button>
             <input
-              type='number'
+              type='text'
               min='1'
               max='9'
               maxLength='1'
               onInput={checkMaxLength}
               value={qty}
-              onChange={(e) => setQty(e.target.value)}
-              disabled
+              onChange={(e) =>
+                handleChange(Number(e.target.value.replace(/\D/, 1)))
+              }
             />
             <button
               className='border-radius-right'
