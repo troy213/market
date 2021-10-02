@@ -33,6 +33,10 @@ footer {
   color: var(--clr-secondary);
 }
 
+.accordion-content a:hover {
+  color: var(--clr-light);
+}
+
 .accordion-content form {
   display: flex;
   flex-direction: column;

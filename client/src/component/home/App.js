@@ -223,24 +223,24 @@ const App = () => {
             <img src={Package} alt='box' className='services-img' />
             <h3>Satisfactory Guarantee</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-              consequuntur hic facilis perferendis
+              We ensure our customers have the best experience with the best
+              quality product and competitive price from our product provider.
             </p>
           </div>
           <div className='services-item'>
             <img src={Save} alt='save' className='services-img' />
             <h3>Extra Cashback</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-              consequuntur hic facilis perferendis
+              Get a chance to win extra cashback and other benefits from us for
+              all our loyal customers.
             </p>
           </div>
           <div className='services-item'>
             <img src={Service} alt='service' className='services-img' />
             <h3>Customer Service</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-              consequuntur hic facilis perferendis
+              If you have any questions or suggestions, we provide our contact
+              below. Our customer service will be ready to help 24 / 7.
             </p>
           </div>
         </div>

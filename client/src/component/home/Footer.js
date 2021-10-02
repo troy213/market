@@ -27,9 +27,10 @@ const Footer = () => {
       <div className='footer-container'>
         <Accordion title='Subscribe' collapse={accordionCollapse}>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu, nibh
-            commodo maecenas sed.
+            Do not miss the chance, subscribe to our newsletter to get the
+            latest information about our products.
           </p>
+          <br />
           <form>
             <input
               type='text'
@@ -44,17 +45,26 @@ const Footer = () => {
         </Accordion>
         <Accordion title='About Us' collapse={accordionCollapse}>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos nulla
-            sunt illum asperiores autem aliquam accusamus? Vero blanditiis
-            nostrum voluptatem, facere, debitis velit fugiat deleniti quae
-            distinctio iusto possimus. Doloremque!
+            This is an e-commerce demo project for my website portfolio project,
+            all of the representative products above just for content for this
+            website, the photo of the products I get from{' '}
+            <a href='https://www.osprey.com'>Osprey</a>,{' '}
+            <a href='https://www.fjallraven.com'>Fjallraven</a>,{' '}
+            <a href='https://www.eigeradveture.com'>Eiger</a>, and{' '}
+            <a href='https://www.naturehike.com'>Naturehike</a> website and not
+            mine. For any takedown request, you can send a message through my
+            website <a href='https://www.triteraerlangga.com/#contact'>here</a>
           </p>
         </Accordion>
         <Accordion title='FAQ' collapse={accordionCollapse}>
+          <p>Q: Can I purchase any product in this website?</p>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus,
-            earum quas eaque adipisci, assumenda dicta sint dolor quos in hic
-            blanditiis voluptas corrupti
+            A: No, this website just for my website portfolio project, you can
+            purchase the products in <a href='https://www.osprey.com'>Osprey</a>
+            , <a href='https://www.fjallraven.com'>Fjallraven</a>,{' '}
+            <a href='https://www.eigeradveture.com'>Eiger</a>, and{' '}
+            <a href='https://www.naturehike.com'>Naturehike</a> website for all
+            the product above
           </p>
         </Accordion>
         <Accordion title='Stay Connected' collapse={accordionCollapse}>

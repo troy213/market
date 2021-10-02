@@ -65,12 +65,12 @@ const Cart = (props) => {
               <p>${props.data.total}</p>
             </div>
             <div>
-              <p>Delivery</p>
-              <p>$0</p>
+              <p>Tax</p>
+              <p>${props.data.total * 0.1}</p>
             </div>
             <div>
               <p>Total</p>
-              <p>${props.data.total}</p>
+              <p>${props.data.total + props.data.total * 0.1}</p>
             </div>
             <button onClick={() => setIsOpen(true)}>Checkout</button>
           </div>
