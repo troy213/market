@@ -17,8 +17,11 @@ const Search = () => {
   const productList = useFetch(
     `${
       sort
-        ? 'http://localhost:5000/product?search=' + name + '&sort=' + sort
-        : 'http://localhost:5000/product?search=' + name
+        ? 'https://market-tritera-erlangga.herokuapp.com/product?search=' +
+          name +
+          '&sort=' +
+          sort
+        : 'https://market-tritera-erlangga.herokuapp.com/product?search=' + name
     }`
   )
 

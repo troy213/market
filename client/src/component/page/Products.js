@@ -15,15 +15,16 @@ const Products = () => {
   const productList = useFetch(
     `${
       categories && sort
-        ? 'http://localhost:5000/product?categories=' +
+        ? 'https://market-tritera-erlangga.herokuapp.com/product?categories=' +
           categories +
           '&sort=' +
           sort
         : categories
-        ? 'http://localhost:5000/product?categories=' + categories
+        ? 'https://market-tritera-erlangga.herokuapp.com/product?categories=' +
+          categories
         : sort
-        ? 'http://localhost:5000/product?sort=' + sort
-        : 'http://localhost:5000/product'
+        ? 'https://market-tritera-erlangga.herokuapp.com/product?sort=' + sort
+        : 'https://market-tritera-erlangga.herokuapp.com/product'
     }`
   )
 

@@ -92,7 +92,7 @@ const CartProduct = (props) => {
 
   const qtyIncrement = () => {
     setQty(qty + 1)
-    Axios.put(`http://localhost:5000/order`, {
+    Axios.put(`https://market-tritera-erlangga.herokuapp.com/order`, {
       orderId: props.orderId,
       qty: qty + 1,
     })
@@ -100,7 +100,7 @@ const CartProduct = (props) => {
 
   const qtyDecrement = () => {
     setQty(qty - 1)
-    Axios.put(`http://localhost:5000/order`, {
+    Axios.put(`https://market-tritera-erlangga.herokuapp.com/order`, {
       orderId: props.orderId,
       qty: qty - 1,
     })
@@ -109,7 +109,7 @@ const CartProduct = (props) => {
   const handleChange = (value) => {
     setQty(value)
     if (qty !== null) {
-      Axios.put(`http://localhost:5000/order`, {
+      Axios.put(`https://market-tritera-erlangga.herokuapp.com/order`, {
         orderId: props.orderId,
         qty: value,
       })
@@ -118,7 +118,9 @@ const CartProduct = (props) => {
   }
 
   const cancelItem = () => {
-    Axios.delete(`http://localhost:5000/order/${props.orderId}`)
+    Axios.delete(
+      `https://market-tritera-erlangga.herokuapp.com/order/${props.orderId}`
+    )
     window.location.reload()
   }
 

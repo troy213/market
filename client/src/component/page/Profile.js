@@ -107,11 +107,14 @@ const ChangePass = (props) => {
 
   const changePass = () => {
     if (oldPass && newPass === rePass) {
-      Axios.put('http://localhost:5000/user/profile/password', {
-        id: props.id,
-        oldPass: oldPass,
-        newPass: newPass,
-      })
+      Axios.put(
+        'https://market-tritera-erlangga.herokuapp.com/user/profile/password',
+        {
+          id: props.id,
+          oldPass: oldPass,
+          newPass: newPass,
+        }
+      )
         .then((res) => {
           if (res.data.success) {
             window.location.reload()
@@ -218,7 +221,7 @@ const NameEdit = (props) => {
 
   const nameSubmit = () => {
     if (name) {
-      Axios.put('http://localhost:5000/user/profile', {
+      Axios.put('https://market-tritera-erlangga.herokuapp.com/user/profile', {
         id: props.id,
         name: name,
       })
@@ -272,7 +275,7 @@ const AddressEdit = (props) => {
 
   const addressSubmit = () => {
     if (address) {
-      Axios.put('http://localhost:5000/user/profile', {
+      Axios.put('https://market-tritera-erlangga.herokuapp.com/user/profile', {
         id: props.id,
         address: address,
       })
@@ -326,7 +329,7 @@ const PhoneEdit = (props) => {
 
   const phoneSubmit = () => {
     if (phone) {
-      Axios.put('http://localhost:5000/user/profile', {
+      Axios.put('https://market-tritera-erlangga.herokuapp.com/user/profile', {
         id: props.id,
         phone: phone,
       })

@@ -52,8 +52,12 @@ const App = () => {
     },
   }
 
-  const productList = useFetch('http://localhost:5000/product')
-  const productHot = useFetch('http://localhost:5000/product/all/hot')
+  const productList = useFetch(
+    'https://market-tritera-erlangga.herokuapp.com/product'
+  )
+  const productHot = useFetch(
+    'https://market-tritera-erlangga.herokuapp.com/product/all/hot'
+  )
 
   return (
     <>

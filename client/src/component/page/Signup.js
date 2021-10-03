@@ -24,7 +24,7 @@ const Signup = () => {
   const signUp = () => {
     if (email && password && retype) {
       if (validateEmail(email) && password === retype) {
-        Axios.post('http://localhost:5000/user', {
+        Axios.post('https://market-tritera-erlangga.herokuapp.com/user', {
           email: email.toLocaleLowerCase(),
           password: password,
         })

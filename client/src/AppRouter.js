@@ -25,7 +25,9 @@ const AppRouter = (props) => {
           authorization: `Bearer ${localStorage.getItem('user')}`,
         }
 
-        Axios.get('http://localhost:5000/auth', { headers: headers })
+        Axios.get('https://market-tritera-erlangga.herokuapp.com/auth', {
+          headers: headers,
+        })
           .then((res) => {
             if (res.status >= 200 && res.status <= 299) {
               if (res.data.success) {
