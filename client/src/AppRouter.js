@@ -57,23 +57,14 @@ const AppRouter = (props) => {
         </Route>
         <Route path='/search' exact component={Search} />
         <Route path='/signup' exact component={Signup} />
-        {!props.isLoading &&
-          (props.isAuthorized ? (
-            <Route path='/cart' exact>
-              <Cart />
-            </Route>
-          ) : (
-            <Redirect to='/' />
-          ))}
+        <Route path='/cart' exact>
+          {props.isGuest ? <Redirect to='/' /> : <Cart />}
+        </Route>
         <Route path='/products' exact component={Products} />
         <Route path='/products/:name' exact component={Item} />
-        {!props.isLoading &&
-          (props.isAuthorized ? (
-            <Route path='/profile' exact component={Profile} />
-          ) : (
-            <Redirect to='/' />
-          ))}
-
+        <Route path='/profile' exact>
+          {props.isGuest ? <Redirect to='/' /> : <Profile />}
+        </Route>
         <Route path='*' component={Error} />
       </Switch>
     </Router>
