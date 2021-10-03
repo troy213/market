@@ -217,6 +217,10 @@
   right: 0;
 }
 
+.navbar-filler {
+  width: 185px;
+}
+
 @media (min-width: 706px) {
   .nav {
     padding: 1em 0 0.5em 0;

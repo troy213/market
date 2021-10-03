@@ -77,6 +77,8 @@ const Header = (props) => {
                   Logout
                 </button>
               </>
+            ) : !props.isGuest ? (
+              <div className='navbar-filler'></div>
             ) : (
               <button
                 onClick={() => setIsOpen(true)}
