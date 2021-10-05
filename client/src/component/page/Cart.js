@@ -34,9 +34,13 @@ const Cart = (props) => {
             <h2>My Cart</h2>
             <div className='cart-content-list'>
               {props.isLoading ? (
-                <h1>Loading</h1>
+                <div className='cart-message-container'>
+                  <h3 className='loading-text'>Loading</h3>
+                </div>
               ) : props.isError ? (
-                <h1>Error</h1>
+                <div className='cart-message-container'>
+                  <h3 className='loading-text'>Error</h3>
+                </div>
               ) : props.data.order_list.length > 0 ? (
                 props.data.order_list.map((value) => {
                   const { order_id, name, price, image, qty } = value
@@ -92,7 +96,7 @@ const CartProduct = (props) => {
 
   const qtyIncrement = () => {
     setQty(qty + 1)
-    Axios.put(`http://localhost:5000/order`, {
+    Axios.put(`https://market-tritera-erlangga.herokuapp.com/order`, {
       orderId: props.orderId,
       qty: qty + 1,
     })
@@ -100,7 +104,7 @@ const CartProduct = (props) => {
 
   const qtyDecrement = () => {
     setQty(qty - 1)
-    Axios.put(`http://localhost:5000/order`, {
+    Axios.put(`https://market-tritera-erlangga.herokuapp.com/order`, {
       orderId: props.orderId,
       qty: qty - 1,
     })
@@ -109,7 +113,7 @@ const CartProduct = (props) => {
   const handleChange = (value) => {
     setQty(value)
     if (qty !== null) {
-      Axios.put(`http://localhost:5000/order`, {
+      Axios.put(`https://market-tritera-erlangga.herokuapp.com/order`, {
         orderId: props.orderId,
         qty: value,
       })
@@ -118,7 +122,9 @@ const CartProduct = (props) => {
   }
 
   const cancelItem = () => {
-    Axios.delete(`http://localhost:5000/order/${props.orderId}`)
+    Axios.delete(
+      `https://market-tritera-erlangga.herokuapp.com/order/${props.orderId}`
+    )
     window.location.reload()
   }
 

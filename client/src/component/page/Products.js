@@ -15,15 +15,16 @@ const Products = () => {
   const productList = useFetch(
     `${
       categories && sort
-        ? 'http://localhost:5000/product?categories=' +
+        ? 'https://market-tritera-erlangga.herokuapp.com/product?categories=' +
           categories +
           '&sort=' +
           sort
         : categories
-        ? 'http://localhost:5000/product?categories=' + categories
+        ? 'https://market-tritera-erlangga.herokuapp.com/product?categories=' +
+          categories
         : sort
-        ? 'http://localhost:5000/product?sort=' + sort
-        : 'http://localhost:5000/product'
+        ? 'https://market-tritera-erlangga.herokuapp.com/product?sort=' + sort
+        : 'https://market-tritera-erlangga.herokuapp.com/product'
     }`
   )
 
@@ -93,9 +94,14 @@ const Products = () => {
           <div className='center'>
             <div className='products-content-list'>
               {productList.isLoading ? (
-                <h1>Loading</h1>
+                <>
+                  <div className='card-skeleton'></div>
+                  <div className='card-skeleton'></div>
+                  <div className='card-skeleton'></div>
+                  <div className='card-skeleton'></div>
+                </>
               ) : productList.isError ? (
-                <h1>Error</h1>
+                <h3 className='loading-text'>Error</h3>
               ) : (
                 productList.data.map((value) => {
                   const { product_id, name, price, image, url, description } =

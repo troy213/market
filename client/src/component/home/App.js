@@ -52,8 +52,37 @@ const App = () => {
     },
   }
 
-  const productList = useFetch('http://localhost:5000/product')
-  const productHot = useFetch('http://localhost:5000/product/all/hot')
+  const arr = [1, 2, 3, 4]
+
+  const productList = useFetch(
+    'https://market-tritera-erlangga.herokuapp.com/product'
+  )
+  const productHot = useFetch(
+    'https://market-tritera-erlangga.herokuapp.com/product/all/hot'
+  )
+
+  React.useEffect(() => {
+    const options = {
+      root: null,
+      threshold: 0,
+      rootMargin: '0px',
+    }
+
+    const serviceItems = document.querySelectorAll('.services-item-wrapper')
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.toggle('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, options)
+
+    serviceItems.forEach((item) => {
+      observer.observe(item)
+    })
+  }, [])
 
   return (
     <>
@@ -141,9 +170,11 @@ const App = () => {
               swipeable
             >
               {productHot.isLoading ? (
-                <h1>Loading</h1>
+                arr.map((value) => {
+                  return <div className='card-skeleton' key={value}></div>
+                })
               ) : productHot.isError ? (
-                <h1>Error</h1>
+                <h3 className='loading-text'>Error</h3>
               ) : (
                 productHot.data.map((value) => {
                   const { product_id, name, price, image, url, description } =
@@ -188,9 +219,11 @@ const App = () => {
               swipeable
             >
               {productList.isLoading ? (
-                <h1>Loading</h1>
+                arr.map((value) => {
+                  return <div className='card-skeleton' key={value}></div>
+                })
               ) : productList.isError ? (
-                <h1>Error</h1>
+                <h3 className='loading-text'>Error</h3>
               ) : (
                 productList.data.map((value) => {
                   const { product_id, name, price, image, url, description } =
@@ -220,28 +253,34 @@ const App = () => {
 
         <div className='services'>
           <div className='services-item'>
-            <img src={Package} alt='box' className='services-img' />
-            <h3>Satisfactory Guarantee</h3>
-            <p>
-              We ensure our customers have the best experience with the best
-              quality product and competitive price from our product provider.
-            </p>
+            <div className='services-item-wrapper'>
+              <img src={Package} alt='box' className='services-img' />
+              <h3>Satisfactory Guarantee</h3>
+              <p>
+                We ensure our customers have the best experience with the best
+                quality product and competitive price from our product provider.
+              </p>
+            </div>
           </div>
           <div className='services-item'>
-            <img src={Save} alt='save' className='services-img' />
-            <h3>Extra Cashback</h3>
-            <p>
-              Get a chance to win extra cashback and other benefits from us for
-              all our loyal customers.
-            </p>
+            <div className='services-item-wrapper'>
+              <img src={Save} alt='save' className='services-img' />
+              <h3>Extra Cashback</h3>
+              <p>
+                Get a chance to win extra cashback and other benefits from us
+                for all our loyal customers.
+              </p>
+            </div>
           </div>
           <div className='services-item'>
-            <img src={Service} alt='service' className='services-img' />
-            <h3>Customer Service</h3>
-            <p>
-              If you have any questions or suggestions, we provide our contact
-              below. Our customer service will be ready to help 24 / 7.
-            </p>
+            <div className='services-item-wrapper'>
+              <img src={Service} alt='service' className='services-img' />
+              <h3>Customer Service</h3>
+              <p>
+                If you have any questions or suggestions, we provide our contact
+                below. Our customer service will be ready to help 24 / 7.
+              </p>
+            </div>
           </div>
         </div>
       </div>

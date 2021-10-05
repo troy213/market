@@ -36,57 +36,77 @@ const Profile = (props) => {
           <p onClick={goBack}>&#60; Back</p>
         </div>
       </div>
+
       <div className='profile-wrapper'>
         <div className='profile-content'>
           <h3>Profile</h3>
-          <div>
-            <p>Email</p>
-            <p>{props.data.user.email}</p>
-          </div>
-          <div>
-            <p>Name</p>
-            <p>{props.data.user.name}</p>
-            <i
-              className='fa fa-edit'
-              onClick={() => {
-                setFormContent('name')
-                setIsOpen(true)
-              }}
-            ></i>
-          </div>
-          <div>
-            <p>Address</p>
-            <p>{props.data.user.address}</p>
-            <i
-              className='fa fa-edit'
-              onClick={() => {
-                setFormContent('address')
-                setIsOpen(true)
-              }}
-            ></i>
-          </div>
-          <div>
-            <p>Phone</p>
-            <p>{props.data.user.phone}</p>
-            <i
-              className='fa fa-edit'
-              onClick={() => {
-                setFormContent('phone')
-                setIsOpen(true)
-              }}
-            ></i>
-          </div>
-          <div>
-            <p
-              onClick={() => {
-                setFormContent('password')
-                setIsOpen(true)
-              }}
-              className='change-password'
-            >
-              change password
-            </p>
-          </div>
+          {props.isLoading ? (
+            <h3 className='loading-text'>Loading</h3>
+          ) : props.isError ? (
+            <h3 className='loading-text'>Error</h3>
+          ) : (
+            <>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Email</td>
+                    <td>{props.data.user.email}</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td>{props.data.user.name}</td>
+                    <td>
+                      <i
+                        className='fa fa-edit'
+                        onClick={() => {
+                          setFormContent('name')
+                          setIsOpen(true)
+                        }}
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Address</td>
+                    <td>{props.data.user.address}</td>
+                    <td>
+                      <i
+                        className='fa fa-edit'
+                        onClick={() => {
+                          setFormContent('address')
+                          setIsOpen(true)
+                        }}
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Phone</td>
+                    <td>{props.data.user.phone}</td>
+                    <td>
+                      <i
+                        className='fa fa-edit'
+                        onClick={() => {
+                          setFormContent('phone')
+                          setIsOpen(true)
+                        }}
+                      ></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div>
+                <p
+                  onClick={() => {
+                    setFormContent('password')
+                    setIsOpen(true)
+                  }}
+                  className='change-password'
+                >
+                  change password
+                </p>
+              </div>
+            </>
+          )}
         </div>
       </div>
       <Footer />
@@ -107,11 +127,14 @@ const ChangePass = (props) => {
 
   const changePass = () => {
     if (oldPass && newPass === rePass) {
-      Axios.put('http://localhost:5000/user/profile/password', {
-        id: props.id,
-        oldPass: oldPass,
-        newPass: newPass,
-      })
+      Axios.put(
+        'https://market-tritera-erlangga.herokuapp.com/user/profile/password',
+        {
+          id: props.id,
+          oldPass: oldPass,
+          newPass: newPass,
+        }
+      )
         .then((res) => {
           if (res.data.success) {
             window.location.reload()
@@ -218,7 +241,7 @@ const NameEdit = (props) => {
 
   const nameSubmit = () => {
     if (name) {
-      Axios.put('http://localhost:5000/user/profile', {
+      Axios.put('https://market-tritera-erlangga.herokuapp.com/user/profile', {
         id: props.id,
         name: name,
       })
@@ -272,7 +295,7 @@ const AddressEdit = (props) => {
 
   const addressSubmit = () => {
     if (address) {
-      Axios.put('http://localhost:5000/user/profile', {
+      Axios.put('https://market-tritera-erlangga.herokuapp.com/user/profile', {
         id: props.id,
         address: address,
       })
@@ -326,7 +349,7 @@ const PhoneEdit = (props) => {
 
   const phoneSubmit = () => {
     if (phone) {
-      Axios.put('http://localhost:5000/user/profile', {
+      Axios.put('https://market-tritera-erlangga.herokuapp.com/user/profile', {
         id: props.id,
         phone: phone,
       })

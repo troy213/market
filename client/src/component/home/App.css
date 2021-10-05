@@ -304,6 +304,16 @@ button,
   max-width: 250px;
 }
 
+.services-item-wrapper {
+  position: relative;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 800ms ease-in, top 800ms ease-in;
+}
+
 .services-item h3 {
   color: var(--clr-midtone);
 }
@@ -356,6 +366,38 @@ button,
 .breadcrumb p {
   display: inline;
   color: var(--clr-primary);
+}
+
+.is-visible {
+  top: 0;
+  opacity: 1;
+}
+
+/* skeleton loading */
+
+.loading-text {
+  text-align: center;
+  color: var(--clr-midtone);
+}
+
+.card-skeleton {
+  border-radius: 5px;
+  height: 300px;
+  min-width: 200px;
+  max-width: 250px;
+  cursor: progress;
+  background: linear-gradient(0.25turn, transparent, #fff, transparent),
+    linear-gradient(#ddd, #ddd);
+  background-repeat: no-repeat;
+  background-size: 315px 300px, 315px 300px;
+  background-position: -315px 0, 0 0;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  to {
+    background-position: 315px 0, 0 0;
+  }
 }
 
 @media (min-width: 706px) {

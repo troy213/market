@@ -19,7 +19,7 @@ const Login = () => {
   const signIn = () => {
     if (email && password) {
       if (validateEmail(email)) {
-        Axios.post('http://localhost:5000/user/login', {
+        Axios.post('https://market-tritera-erlangga.herokuapp.com/user/login', {
           email: email.toLowerCase(),
           password: password,
         })

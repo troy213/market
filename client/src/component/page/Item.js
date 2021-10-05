@@ -38,7 +38,7 @@ const Item = () => {
 
   const addToCart = () => {
     Axios.post(
-      'http://localhost:5000/order',
+      'https://market-tritera-erlangga.herokuapp.com/order',
       {
         productId: productId,
         qty: qty,
