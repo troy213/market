@@ -34,9 +34,13 @@ const Cart = (props) => {
             <h2>My Cart</h2>
             <div className='cart-content-list'>
               {props.isLoading ? (
-                <h1>Loading</h1>
+                <div className='cart-message-container'>
+                  <h3 className='loading-text'>Loading</h3>
+                </div>
               ) : props.isError ? (
-                <h1>Error</h1>
+                <div className='cart-message-container'>
+                  <h3 className='loading-text'>Error</h3>
+                </div>
               ) : props.data.order_list.length > 0 ? (
                 props.data.order_list.map((value) => {
                   const { order_id, name, price, image, qty } = value

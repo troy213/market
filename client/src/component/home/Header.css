@@ -141,6 +141,7 @@
 .navlink {
   margin: 0 auto;
   width: 80%;
+  max-width: 980px;
 }
 
 .navlink-content {

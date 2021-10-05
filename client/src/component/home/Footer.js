@@ -44,7 +44,7 @@ const Footer = () => {
           </form>
         </Accordion>
         <Accordion title='About Us' collapse={accordionCollapse}>
-          <p>
+          <p className='about'>
             This is an e-commerce demo project for my website portfolio project,
             all of the representative products above just for content for this
             website, the photo of the products I get from{' '}
@@ -58,13 +58,13 @@ const Footer = () => {
         </Accordion>
         <Accordion title='FAQ' collapse={accordionCollapse}>
           <p>Q: Can I purchase any product in this website?</p>
-          <p>
+          <p className='faq'>
             A: No, this website just for my website portfolio project, you can
-            purchase the products in <a href='https://www.osprey.com'>Osprey</a>
-            , <a href='https://www.fjallraven.com'>Fjallraven</a>,{' '}
+            purchase all of the product above in{' '}
+            <a href='https://www.osprey.com'>Osprey</a>,{' '}
+            <a href='https://www.fjallraven.com'>Fjallraven</a>,{' '}
             <a href='https://www.eigeradveture.com'>Eiger</a>, and{' '}
-            <a href='https://www.naturehike.com'>Naturehike</a> website for all
-            the product above
+            <a href='https://www.naturehike.com'>Naturehike</a> website.
           </p>
         </Accordion>
         <Accordion title='Stay Connected' collapse={accordionCollapse}>

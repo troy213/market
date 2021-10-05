@@ -80,9 +80,14 @@ const Search = () => {
           <div className='center'>
             <div className='products-content-list'>
               {productList.isLoading ? (
-                <h1>Loading</h1>
+                <>
+                  <div className='card-skeleton'></div>
+                  <div className='card-skeleton'></div>
+                  <div className='card-skeleton'></div>
+                  <div className='card-skeleton'></div>
+                </>
               ) : productList.isError ? (
-                <h1>Error</h1>
+                <h1 className='loading-text'>Error</h1>
               ) : (
                 productList.data.map((value) => {
                   const { product_id, name, price, image, url, description } =

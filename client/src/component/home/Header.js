@@ -132,6 +132,9 @@ const SearchBar = (props) => {
       value={props.value}
       onChange={props.handleChange}
       onKeyDown={props.onEnter}
+      onSubmit={() => {
+        window.location.href = `/search?query=${props.value}`
+      }}
     />
   )
 }
