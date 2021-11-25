@@ -37,17 +37,9 @@ const App = () => {
     mobile: {
       breakpoint: {
         max: 830,
-        min: 575,
-      },
-      items: 2,
-      partialVisibilityGutter: 30,
-    },
-    xs: {
-      breakpoint: {
-        max: 575,
         min: 0,
       },
-      items: 1,
+      items: 2,
       partialVisibilityGutter: 30,
     },
   }

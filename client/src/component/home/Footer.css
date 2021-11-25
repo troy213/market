@@ -1,7 +1,8 @@
 footer {
   padding: 2em 1em;
   background: var(--clr-primary);
-  color: var(--clr-secondary);
+  color: var(--clr-light);
+  font-size: 0.9rem;
   min-width: 360px;
 }
 
@@ -17,6 +18,8 @@ footer {
 }
 
 .accordion-title h3 {
+  font-weight: 900;
+  font-size: 1.125rem;
   color: var(--clr-light);
 }
 
@@ -30,11 +33,11 @@ footer {
 }
 
 .accordion-content a {
-  color: var(--clr-secondary);
+  color: var(--clr-light);
 }
 
 .accordion-content a:hover {
-  color: var(--clr-light);
+  color: var(--clr-secondary);
 }
 
 .accordion-content form {

@@ -32,6 +32,12 @@
   width: 80%;
 }
 
+.item-content-desc h3 {
+  font-weight: 900;
+  color: var(--clr-primary);
+  font-size: 1.25rem;
+}
+
 .item-content-desc > button {
   margin: 1em 0;
   padding: 1em;
@@ -46,6 +52,7 @@
 
 .item-content-desc > p:last-child {
   text-align: justify;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-message {
@@ -58,10 +65,19 @@
   margin: 1em;
 }
 
+#add-to-cart {
+  margin-bottom: 2em;
+}
+
 /* animation */
 
 .item-content-desc > button:hover {
   background: var(--clr-midtone);
+}
+
+.item-content-desc > button:disabled {
+  cursor: default;
+  background: #bbb;
 }
 
 @media (min-width: 706px) {

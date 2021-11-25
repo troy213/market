@@ -13,6 +13,7 @@ const Item = () => {
   const [qty, setQty] = useState(1)
   const [isOpen, setIsOpen] = useState(false)
   const [isLogedIn, setIsLogedIn] = useState(true)
+  const [btnDisabled, setBtnDisabled] = useState(false)
 
   const checkMaxLength = (e) => {
     if (e.target.value.length > e.target.maxLength) {
@@ -37,6 +38,7 @@ const Item = () => {
   }
 
   const addToCart = () => {
+    setBtnDisabled(true)
     Axios.post(
       'https://market-tritera-erlangga.herokuapp.com/order',
       {
@@ -49,11 +51,15 @@ const Item = () => {
       }
     )
       .then((res) => {
-        if (res.data.success) setIsOpen(true)
+        if (res.data.success) {
+          setIsOpen(true)
+          setBtnDisabled(false)
+        }
       })
       .catch(() => {
         setIsLogedIn(false)
         setIsOpen(true)
+        setBtnDisabled(false)
       })
   }
 
@@ -119,7 +125,13 @@ const Item = () => {
                 +
               </button>
             </div>
-            <button onClick={addToCart}>Add to Cart</button>
+            <button
+              onClick={addToCart}
+              id='add-to-cart'
+              disabled={btnDisabled ? true : false}
+            >
+              Add to Cart
+            </button>
             <h3>Description</h3>
             <p>{description}</p>
           </div>

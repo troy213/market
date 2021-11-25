@@ -30,7 +30,7 @@ input[type='number'] {
 
 /* Global */
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700;900&family=Kaushan+Script&display=swap');
 
 body {
   font-family: 'Roboto', 'Lato', sans-serif;
@@ -83,6 +83,11 @@ p {
   background: var(--clr-light);
   color: var(--clr-primary);
   font-weight: bolder;
+}
+
+.promo-content-desc .btn-outline:hover {
+  background: whitesmoke;
+  color: var(--clr-primary);
 }
 
 .btn-dark {
@@ -170,12 +175,22 @@ button,
   width: 90%;
 }
 
+.promo-content-desc h3 {
+  font-weight: 900;
+  font-size: 1.25rem;
+}
+
 .promo-content-desc p {
-  color: var(--clr-light);
+  color: whitesmoke;
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 52px;
   white-space: pre-wrap;
+}
+
+.promo-content-desc .btn-outline {
+  border: 5px solid whitesmoke;
+  color: whitesmoke;
 }
 
 .promo-content-image {
@@ -244,12 +259,12 @@ button,
 
 .card {
   border-radius: 5px;
-  height: 300px;
-  min-width: 200px;
-  max-width: 250px;
+  height: 250px;
+  width: 150px;
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.3);
   transition: transform 100ms ease-in;
+  overflow: hidden;
 }
 
 .card:hover {
@@ -266,8 +281,8 @@ button,
 .product-image {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   object-fit: contain;
 }
 
@@ -316,10 +331,15 @@ button,
 
 .services-item h3 {
   color: var(--clr-midtone);
+  font-weight: 900;
+  font-size: 1.25rem;
 }
 
 .services-item p {
-  text-align: justify;
+  margin-top: 0.5em;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 0.9rem;
 }
 
 .services-img {
@@ -383,8 +403,7 @@ button,
 .card-skeleton {
   border-radius: 5px;
   height: 300px;
-  min-width: 200px;
-  max-width: 250px;
+  width: 150px;
   cursor: progress;
   background: linear-gradient(0.25turn, transparent, #fff, transparent),
     linear-gradient(#ddd, #ddd);
@@ -397,6 +416,23 @@ button,
 @keyframes loading {
   to {
     background-position: 315px 0, 0 0;
+  }
+}
+
+@media (min-width: 590px) {
+  .card {
+    height: 300px;
+    width: 200px;
+  }
+
+  .product-image {
+    height: 200px;
+    width: 200px;
+  }
+
+  .card-skeleton {
+    height: 300px;
+    width: 200px;
   }
 }
 

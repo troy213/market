@@ -9,6 +9,12 @@ import './Cart.css'
 const Cart = (props) => {
   const [isOpen, setIsOpen] = useState(false)
 
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  })
+
   return (
     <div className='cart-container'>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
@@ -66,15 +72,17 @@ const Cart = (props) => {
             <h2>Total</h2>
             <div>
               <p>Sub Total</p>
-              <p>${props.data.total}</p>
+              <p>{formatter.format(props.data.total)}</p>
             </div>
             <div>
               <p>Tax</p>
-              <p>${props.data.total * 0.1}</p>
+              <p>{formatter.format(props.data.total * 0.1)}</p>
             </div>
             <div>
               <p>Total</p>
-              <p>${props.data.total + props.data.total * 0.1}</p>
+              <p>
+                {formatter.format(props.data.total + props.data.total * 0.1)}
+              </p>
             </div>
             <button onClick={() => setIsOpen(true)}>Checkout</button>
           </div>
@@ -99,6 +107,8 @@ const CartProduct = (props) => {
     Axios.put(`https://market-tritera-erlangga.herokuapp.com/order`, {
       orderId: props.orderId,
       qty: qty + 1,
+    }).then((res) => {
+      window.location.reload()
     })
   }
 
@@ -107,6 +117,8 @@ const CartProduct = (props) => {
     Axios.put(`https://market-tritera-erlangga.herokuapp.com/order`, {
       orderId: props.orderId,
       qty: qty - 1,
+    }).then((res) => {
+      window.location.reload()
     })
   }
 
@@ -116,17 +128,25 @@ const CartProduct = (props) => {
       Axios.put(`https://market-tritera-erlangga.herokuapp.com/order`, {
         orderId: props.orderId,
         qty: value,
+      }).then((res) => {
+        window.location.reload()
       })
-      // window.location.reload()
     }
   }
 
   const cancelItem = () => {
     Axios.delete(
       `https://market-tritera-erlangga.herokuapp.com/order/${props.orderId}`
-    )
-    window.location.reload()
+    ).then((res) => {
+      window.location.reload()
+    })
   }
+
+  var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  })
 
   return (
     <>
@@ -139,7 +159,7 @@ const CartProduct = (props) => {
         </div>
         <div className='cart-product-desc'>
           <p>
-            <strong>${props.price * qty}</strong>
+            <strong>{formatter.format(props.price * qty)}</strong>
           </p>
           <p>{props.name}</p>
           <div className='cart-product-qty'>
